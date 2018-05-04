@@ -289,7 +289,7 @@ This function was replaced by [IMigrationRunnerConventions.GetMigrationInfoForMi
 
 This function was replaced by [IProfileLoader.ApplyProfiles(IMigrationRunner)](xref:FluentMigrator.Runner.IProfileLoader.ApplyProfiles(FluentMigrator.Runner.IMigrationRunner)) to avoid circular dependencies.
 
-## [IProfileLoader.FindProfilesIn(IAssemblyCollection, String)](xref:FluentMigrator.Runner.IProfileLoader.FindProfilesIn(FluentMigrator.Infrastructure.IAssemblyCollection,System.String))
+## [IProfileLoader.FindProfilesIn(IAssemblyCollection, String)](xref:FluentMigrator.Runner.IProfileLoader.FindProfilesIn(IAssemblyCollection,System.String)))
 
 This function is not used anymore.
 
@@ -384,7 +384,7 @@ This class was overkill.
 
 ## `MigrationGeneratorFactory`
 
-This isn't needed anymore, because all factories must be added dynamically using the [ConfigureRunner](xref:Microsoft.Extensions.DependencyInjection.FluentMigratorServiceCollectionExtensions.ConfigureRunner(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{FluentMigrator.Runner.IMigrationRunnerBuilder})) extension method.
+This isn't needed anymore, because all factories must be added dynamically using the [ConfigureRunner](xref:Microsoft.Extensions.DependencyInjection.FluentMigratorServiceCollectionExtensions.ConfigureRunner(IServiceCollection,System.Action{FluentMigrator.Runner.IMigrationRunnerBuilder})) extension method.
 
 <a id="factory-example"></a>Example:
 
@@ -411,12 +411,12 @@ The key is the [IProcessorAccessor](xref:FluentMigrator.Runner.Processors.IProce
 default implementation [SelectingProcessorAccessor](xref:FluentMigrator.Runner.Processors.SelectingProcessorAccessor),
 which is configured using the [SelectingProcessorAccessorOptions](xref:FluentMigrator.Runner.Processors.SelectingProcessorAccessorOptions).
 
-> [!INFO]
+> [!NOTE]
 > When the [SelectingProcessorAccessorOptions](xref:FluentMigrator.Runner.Processors.SelectingProcessorAccessorOptions) aren't configured,
 > then the value from the [SelectingGeneratorAccessorOptions](xref:FluentMigrator.Runner.Generators.SelectingGeneratorAccessorOptions)
 > is used.
 
-> [!INFO]
+> [!NOTE]
 > When neiter a processor nor generator ID was specified, then the added processor
 > will be used - but only where there is only one! When no processor or more than
 > one was specified, then an exception gets thrown.
@@ -444,7 +444,7 @@ var serviceProvider = new ServiceCollection()
 
 ## `MigrationProcessorFactoryProvider`
 
-This isn't needed anymore, because all processor factory providers must be added dynamically using the [ConfigureRunner](xref:Microsoft.Extensions.DependencyInjection.FluentMigratorServiceCollectionExtensions.ConfigureRunner(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{FluentMigrator.Runner.IMigrationRunnerBuilder})) extension method.
+This isn't needed anymore, because all processor factory providers must be added dynamically using the [ConfigureRunner](xref:Microsoft.Extensions.DependencyInjection.FluentMigratorServiceCollectionExtensions.ConfigureRunner(IServiceCollection,System.Action{FluentMigrator.Runner.IMigrationRunnerBuilder})) extension method.
 
 You can find an example [above](#factory-example).
 
@@ -454,12 +454,12 @@ The key is the [IGeneratorAccessor](xref:FluentMigrator.Runner.Generators.IGener
 default implementation [SelectingGeneratorAccessor](xref:FluentMigrator.Runner.Generators.SelectingGeneratorAccessor),
 which is configured using the [SelectingGeneratorAccessorOptions](xref:FluentMigrator.Runner.Generators.SelectingGeneratorAccessorOptions).
 
-> [!INFO]
+> [!NOTE]
 > When the [SelectingGeneratorAccessorOptions](xref:FluentMigrator.Runner.Generators.SelectingGeneratorAccessorOptions) aren't configured,
 > then the value from the [SelectingProcessorAccessorOptions](xref:FluentMigrator.Runner.Processors.SelectingProcessorAccessorOptions)
 > is used.
 
-> [!INFO]
+> [!NOTE]
 > When neiter a generator nor processor ID was specified, then the added generator
 > will be used - but only where there is only one! When no generator or more than
 > one was specified, then an exception gets thrown.

@@ -14,7 +14,7 @@
           ]
         }
       ],
-      "dest": "v2.x",
+      "dest": "api/v2.x",
       "filter": "api-filter.yml",
       "disableGitFeatures": true,
       "properties": {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "dest": "v3.x",
+      "dest": "api/v3.x",
       "filter": "api-filter.yml",
       "disableGitFeatures": false,
       "properties": {
@@ -47,18 +47,19 @@
     "content": [
       {
         "files": [ "**.yml", "**.md" ],
-        "src": "v2.x",
+        "src": "api/v2.x",
         "dest": "api/v2.x",
         "group": "v2.x"
       },
       {
         "files": [ "**.yml", "**.md" ],
-        "src": "v3.x",
+        "src": "api/v3.x",
         "dest": "api/v3.x"
       },
       {
         "files": [
-          "api/*.md"
+          "api/*.md",
+          "api/toc.yml"
         ]
       },
       {
@@ -80,7 +81,17 @@
     "overwrite": [
       {
         "files": [
-          "apidoc/**.md"
+          "apidoc/v2.x/**.md"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ],
+        "group": "v2.x"
+      },
+      {
+        "files": [
+          "apidoc/v3.x/**.md"
         ],
         "exclude": [
           "obj/**",
@@ -108,9 +119,23 @@
       "_appFaviconPath": "images/favicon.ico",
       "_enableSearch": true,
       "_gitContribute": {
-        "repo": "https://github.com/fluentmigrator/fluentmigrator",
-        "branch": "develop",
-        "apiSpecFolder": "docfx_project/apidoc"
+        "repo": "https://github.com/fluentmigrator/documentation",
+        "branch": "master",
+        "apiSpecFolder": "apidoc"
+      }
+    },
+    "fileMetadata": {
+      "_gitContribute": {
+        "api/v2.x/**": {
+          "repo": "https://github.com/fluentmigrator/documentation",
+          "branch": "master",
+          "apiSpecFolder": "apidoc/v2.x"
+        },
+        "api/v3.x/**": {
+          "repo": "https://github.com/fluentmigrator/documentation",
+          "branch": "master",
+          "apiSpecFolder": "apidoc/v3.x"
+        }
       }
     }
   }
