@@ -1,0 +1,8 @@
+[submodule "fm-v2.x"]
+	path = fm-v2.x
+	url = https://github.com/fluentmigrator/fluentmigrator
+	branch = archive/2.x
+[submodule "fm-v3.x"]
+	path = fm-v3.x
+	url = https://github.com/fluentmigrator/fluentmigrator
+	branch = release/v3.0.0
