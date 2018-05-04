@@ -1,0 +1,21 @@
+language: csharp
+dist: trusty
+mono: latest
+git:
+  depth: false
+before_script:
+- nuget install docfx.console -ExcludeVersion
+- export DOCFX_TOOL="mono docfx.console/tools/docfx.exe"
+script:
+- $DOCFX_TOOL metadata docfx.json
+- $DOCFX_TOOL build docfx.json
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  repo: fluentmigrator/fluentmigrator.github.io
+  target-branch: master
+  local-dir: _site
+  keep-history: true
+  on:
+    branch: master
