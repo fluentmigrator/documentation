@@ -1,3 +1,4 @@
 apiRules:
 - exclude:
-    uidRegex: ^FluentMigrator\.Builders
+    uidRegex: ^FluentMigrator\.Builders\.
+    type: Class
