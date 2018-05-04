@@ -47,5 +47,7 @@
 - name: Guides
   href: guides/toc.yml
   topicHref: guides/overview.md
+- name: Technical
+  href: technical/toc.yml
 - name: Glossary
   href: xref:glossary
