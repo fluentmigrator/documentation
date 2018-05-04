@@ -4,3 +4,5 @@ This is the FluentMigrator documentation created with
 the [docfx](https://github.com/dotnet/docfx) tool.
 
 You can find the published version of the documentation on [fluentmigrator.github.io](https://fluentmigrator.github.io).
+
+Build status: [![Build Status](https://travis-ci.com/fluentmigrator/documentation.svg?branch=master)](https://travis-ci.com/fluentmigrator/documentation)
