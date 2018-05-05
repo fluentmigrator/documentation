@@ -44,7 +44,9 @@ ColumnType -> FnTypeAnsiString
     | FnTypeAsDateTime
     | FnTypeAsDateTime2
     | FnTypeAsDateTimeOffset
+    | FnTypeAsDateTimeOffsetPrecision
     | FnTypeAsDecimal
+    | FnTypeAsDecimalPrecisionScale
     | FnTypeAsDouble
     | FnTypeAsFloat
     | FnTypeAsGuid
@@ -101,7 +103,9 @@ FnTypeAsDate : "AsDate()" ;
 FnTypeAsDateTime : "AsDateTime()" ;
 FnTypeAsDateTime2 : "AsDateTime2()" ;
 FnTypeAsDateTimeOffset : "AsDateTimeOffset()" ;
+FnTypeAsDateTimeOffsetPrecision : "AsDateTimeOffset(int precision)" ;
 FnTypeAsDecimal : "AsDecimal()" ;
+FnTypeAsDecimalPrecisionScale : "AsDecimal(int precision, int scale)" ;
 FnTypeAsDouble : "AsDouble()" ;
 FnTypeAsFloat : "AsFloat()" ;
 FnTypeAsGuid : "AsGuid()" ;
