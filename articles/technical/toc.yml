@@ -1,2 +1,8 @@
-- name: Fluent Syntax Schema
+- name: Fluent Syntax Schema Overview
   href: xref:tech-fluent-api
+- nema: Create expression
+  href: xref:tech-fluent-api-create
+- name: Alter expression
+  href: xref:tech-fluent-api-alter
+- name: Delete expression
+  href: xref:tech-fluent-api-delete
