@@ -78,28 +78,6 @@ Create -+- Schema ------------- name --- ICreateSchemaOptionsSyntax ---
 
 - [IColumnTypeSyntax](xref:tech-fluent-api-common#icolumntypesyntaxtnext)
 
-## ICreateColumnOptionSyntax
-
-<pre>
---------+-------------------------------+- IColumnOptionSyntax -+--> TNext: ICreateColumnOptionSyntax
-        |                               |                       |
-        +- SetExistingRowsTo --- value -+                       +--> TNextFk: ICreateColumnOptionOrForeignKeyCascadeSyntax
-</pre>
-
-- [IColumnOptionSyntax](xref:tech-fluent-api-common#icolumnoptionsyntaxtnexttnextfk)
-
-## ICreateColumnOptionOrForeignKeyCascadeSyntax
-
-<pre>
---------+--> ICreateColumnOptionSyntax
-        |
-        +- IForeignKeyCascadeSyntax -+--> TNext: ICreateColumnOptionSyntax
-                                     |
-                                     +--> TNextFk: ICreateColumnOptionOrForeignKeyCascadeSyntax
-</pre>
-
-- [IForeignKeyCascadeSyntax](xref:tech-fluent-api-common#iforeignkeycascadesyntaxtnexttnextfk)
-
 ## ICreateTableColumnOptionOrWithColumnSyntax
 
 <pre>
@@ -148,6 +126,28 @@ Create -+- Schema ------------- name --- ICreateSchemaOptionsSyntax ---
 
 - [IColumnTypeSyntax](xref:tech-fluent-api-common#icolumntypesyntaxtnext)
 - [ICreateColumnOptionSyntax](#icreatecolumnoptionsyntax)
+
+## ICreateColumnOptionSyntax
+
+<pre>
+--------+-------------------------------+- IColumnOptionSyntax -+--> TNext: ICreateColumnOptionSyntax
+        |                               |                       |
+        +- SetExistingRowsTo --- value -+                       +--> TNextFk: ICreateColumnOptionOrForeignKeyCascadeSyntax
+</pre>
+
+- [IColumnOptionSyntax](xref:tech-fluent-api-common#icolumnoptionsyntaxtnexttnextfk)
+
+## ICreateColumnOptionOrForeignKeyCascadeSyntax
+
+<pre>
+--------+--> ICreateColumnOptionSyntax
+        |
+        +- IForeignKeyCascadeSyntax -+--> TNext: ICreateColumnOptionSyntax
+                                     |
+                                     +--> TNextFk: ICreateColumnOptionOrForeignKeyCascadeSyntax
+</pre>
+
+- [IForeignKeyCascadeSyntax](xref:tech-fluent-api-common#iforeignkeycascadesyntaxtnexttnextfk)
 
 # ForeignKey
 
