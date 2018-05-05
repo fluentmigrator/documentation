@@ -1,6 +1,6 @@
 - name: Fluent Syntax Schema Overview
   href: xref:tech-fluent-api
-- nema: Create expression
+- name: Create expression
   href: xref:tech-fluent-api-create
 - name: Alter expression
   href: xref:tech-fluent-api-alter
