@@ -20,7 +20,7 @@ Create a database object.
 
 Alter a database object.
 
-## Delete ([IDeleteExpressionRoot](xref:FluentMigrator.Builders.Delete.IDeleteExpressionRoot))
+## [Delete](xref:tech-fluent-api-delete)
 
 Delete a database object or data.
 
