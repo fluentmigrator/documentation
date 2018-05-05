@@ -1,0 +1,140 @@
+# Create syntax
+
+START = create_root ;
+
+create_root -> CreateSchema
+    | CreateTable
+    | CreateColumn
+    | CreateForeignKey
+    | CreateIndex
+    | CreateSequence
+    | CreatePrimaryKey
+    | CreateUniqueConstraint ;
+
+CreateSchema -> FnSchema @ext ;
+
+CreateTable -> FnTable FnWithDescription? FnInSchema?
+    CreateTableColumn* ;
+
+CreateTableColumn -> FnWithColumn ColumnType
+    (ColumnOptions | ColumnOptionsForeignKey)*
+    ;
+
+ForeignKeyCascade -> FnFkCascadeDelete ForeignKeyCascade?
+    | FnFkCascadeUpdate ForeignKeyCascade?
+    | FnFkCascadeDeleteOrUpdate
+    ;
+
+ColumnType -> FnTypeAnsiString
+    | FnTypeAnsiStringCollation
+    | FnTypeAnsiStringSize
+    | FnTypeAnsiStringSizeCollation
+    | FnTypeAsFixedLengthAnsiString
+    | FnTypeAsFixedLengthAnsiStringCollation
+    | FnTypeString
+    | FnTypeStringCollation
+    | FnTypeStringSize
+    | FnTypeStringSizeCollation
+    | FnTypeAsFixedLengthString
+    | FnTypeAsFixedLengthStringCollation
+    | FnTypeBoolean
+    | FnTypeAsByte
+    | FnTypeAsCurrency
+    | FnTypeAsDate
+    | FnTypeAsDateTime
+    | FnTypeAsDateTime2
+    | FnTypeAsDateTimeOffset
+    | FnTypeAsDecimal
+    | FnTypeAsDouble
+    | FnTypeAsFloat
+    | FnTypeAsGuid
+    | FnTypeAsInt16
+    | FnTypeAsInt32
+    | FnTypeAsInt64
+    | FnTypeAsTime
+    | FnTypeAsXml
+    | FnTypeAsXmlSize
+    | FnTypeAsCustom
+    ;
+
+ColumnOptions -> FnColumnWithDefault
+    | FnColumnWithDefaultValue
+    | FnColumnWithDescription
+    | FnColumnIdentity
+    | FnColumnIndexed
+    | FnColumnPrimaryKey
+    | FnColumnPrimaryKeyWithName
+    | FnColumnNullable
+    | FnColumnNotNullable;
+
+ColumnOptionsForeignKey -> FnColumnFkForeignKey
+    | FnColumnFkForeignKeyTableColumn
+    | FnColumnFkForeignKeyNameTableColumn
+    | FnColumnFkForeignKeyNameSchemaTableColumn ;
+
+FnSchema : "Schema(string name)" ;
+FnTable : "Table(string name)" ;
+FnWithDescription : "WithDescription(string description)" ;
+FnInSchema : "InSchema(string name)" ;
+FnWithColumn : "WithColumn(string name)" ;
+
+FnTypeAnsiString : "AsAnsiString()" ;
+FnTypeAnsiStringSize : "AsAnsiString(int size)" ;
+FnTypeAnsiStringCollation : "AsAnsiString(string collation)" ;
+FnTypeAnsiStringSizeCollation : "AsAnsiString(int size, string collation)" ;
+
+FnTypeAsFixedLengthAnsiString : "AsFixedLengthAnsiString(int size)" ;
+FnTypeAsFixedLengthAnsiStringCollation : "AsFixedLengthAnsiString(int size, string collation)" ;
+
+FnTypeString : "AsString()" ;
+FnTypeStringSize : "AsString(int size)" ;
+FnTypeStringCollation : "AsString(string collation)" ;
+FnTypeStringSizeCollation : "AsString(int size, string collation)" ;
+
+FnTypeAsFixedLengthString : "AsFixedLengthString(int size)" ;
+FnTypeAsFixedLengthStringCollation : "AsFixedLengthString(int size, string collation)" ;
+
+FnTypeBoolean : "AsBoolean()" ;
+FnTypeAsByte : "AsByte()" ;
+FnTypeAsCurrency : "AsCurrency()" ;
+FnTypeAsDate : "AsDate()" ;
+FnTypeAsDateTime : "AsDateTime()" ;
+FnTypeAsDateTime2 : "AsDateTime2()" ;
+FnTypeAsDateTimeOffset : "AsDateTimeOffset()" ;
+FnTypeAsDecimal : "AsDecimal()" ;
+FnTypeAsDouble : "AsDouble()" ;
+FnTypeAsFloat : "AsFloat()" ;
+FnTypeAsGuid : "AsGuid()" ;
+FnTypeAsInt16 : "AsInt16()" ;
+FnTypeAsInt32 : "AsInt32()" ;
+FnTypeAsInt64 : "AsInt64()" ;
+FnTypeAsTime : "AsTime()" ;
+FnTypeAsXml : "AsXml()" ;
+FnTypeAsXmlSize : "AsXml(int size)" ;
+
+FnTypeAsCustom : "AsCustom()" ;
+
+FnColumnWithDefault : "WithDefault(SystemMethods method)" ;
+FnColumnWithDefaultValue : "WithDefaultValue(object value)" ;
+FnColumnWithDescription : "WithColumnDescription(string description)" ;
+FnColumnIdentity : "Identity()" ;
+FnColumnIndexed : "Indexed()" ;
+FnColumnPrimaryKey : "PrimaryKey()" ;
+FnColumnPrimaryKeyWithName : "PrimaryKey(string name)" ;
+FnColumnNullable : "Nullable()" ;
+FnColumnNotNullable : "NotNullable()" ;
+FnColumnUnique : "Unique()" ;
+FnColumnUniqueWithName : "Unique(string name)" ;
+
+FnColumnFkForeignKey : "ForeignKey()" ;
+FnColumnFkForeignKeyTableColumn : "ForeignKey(string table, string column)" ;
+FnColumnFkForeignKeyNameTableColumn : "ForeignKey(string name, string table, string column)" ;
+FnColumnFkForeignKeyNameSchemaTableColumn : "ForeignKey(string name, string schema, string table, string column)" ;
+
+FnColumnFkReferencedByTableColumn : "ReferencedBy(string table, string column)" ;
+FnColumnFkReferencedByNameTableColumn : "ReferencedBy(string name, string table, string column)" ;
+FnColumnFkReferencedByNameSchemaTableColumn : "ReferencedBy(string name, string schema, string table, string column)" ;
+
+FnFkCascadeUpdate : "OnUpdate(Rule rule)" ;
+FnFkCascadeDelete : "OnDelete(Rule rule)" ;
+FnFkCascadeDeleteOrUpdate : "OnDeleteOrUpdate(Rule rule)" ;
