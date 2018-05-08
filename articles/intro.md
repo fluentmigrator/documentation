@@ -25,10 +25,16 @@ FluentMigrator.DotNet.Cli | The .NET Core 2.1 executable that integrates into th
 
 * [Database functions as default value](xref:db-functions)
 * [Microsoft SQL Server specific extensions](xref:sql-server-extensions.md)
+* [Using raw SQL](xref:raw-sql)
+* [Auto-reversing migrations](xref:migration-auto-reversing)
+* [Transaction modes for the migration runner](xref:migration-transaction-behavior)
 
 # Advanced Features and Techniques of FluentMigrator
 
 * [Dealing with multiple database types](multi-db-support.md)
+* [Filter migrations run based on Tags](xref:migration-filter-tags)
+* [Enforcing migration version numbering rules](xref:migration-attribute-custom)
+* [Create custom metadata for the VersionInfo table](xref:version-table-metadata)
 
 # Current Release
 
@@ -37,6 +43,11 @@ FluentMigrator.DotNet.Cli | The .NET Core 2.1 executable that integrates into th
 # Upgrade guides
 
 * [2.x to 3.0](xref:upgrade-guide-2.0-to-3.0)
+
+# Runners
+
+* [Console](xref:runner-console)
+* [dotnet-fm](xref:dotnet-fm)
 
 # Supported databases
 
