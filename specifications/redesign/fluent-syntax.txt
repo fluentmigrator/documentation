@@ -17,8 +17,10 @@ CreateTable -> FnTable FnWithDescription? FnInSchema?
     CreateTableColumn* ;
 
 CreateTableColumn -> FnWithColumn ColumnType
-    (ColumnOptions | ColumnOptionsForeignKey)*
+    ColumnOptions* CreateTableColumnForeignKey*
     ;
+
+CreateTableColumnForeignKey -> ColumnOptionsForeignKey ForeignKeyCascade? ;
 
 ForeignKeyCascade -> FnFkCascadeDelete ForeignKeyCascade?
     | FnFkCascadeUpdate ForeignKeyCascade?
@@ -154,7 +156,15 @@ FnFkCascadeDeleteOrUpdate : "OnDeleteOrUpdate(Rule rule)" ;
 - The interface provided by a start function has the following properties
     - contains all interfaces for
         - stronly connected components or
-        - sequence of (possibly optional) function calls
+        - sequence of optional function calls
     - the `TNext` of an interface must be implemented
     - when `TNext` is a generic interface, then it should
       become a new interface
+- Star means self-reference
+- We only support `?` and `*`
+    - Range (from n to m) is not supported
+    - `*` means self-reference and must implement following interface
+    - `?` means that
+        - current class must implement all optional interfaces up to (but excluding) the first non-optional
+        - if trailing, then create a combination of this and previous interface
+        - The function call is the entry to the first non-optional interface
