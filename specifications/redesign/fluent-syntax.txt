@@ -142,3 +142,19 @@ FnColumnFkReferencedByNameSchemaTableColumn : "ReferencedBy(string name, string 
 FnFkCascadeUpdate : "OnUpdate(Rule rule)" ;
 FnFkCascadeDelete : "OnDelete(Rule rule)" ;
 FnFkCascadeDeleteOrUpdate : "OnDeleteOrUpdate(Rule rule)" ;
+
+# Algorithm
+
+- A start function call enters eiter
+    - a class of stronly connected components or
+    - a sequence of (possibly optional) function calls
+- A generic `<TNext>` is added to
+    - an optional function call
+    - a reusable component
+- The interface provided by a start function has the following properties
+    - contains all interfaces for
+        - stronly connected components or
+        - sequence of (possibly optional) function calls
+    - the `TNext` of an interface must be implemented
+    - when `TNext` is a generic interface, then it should
+      become a new interface
