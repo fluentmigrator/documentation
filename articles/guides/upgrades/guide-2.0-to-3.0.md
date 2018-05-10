@@ -508,7 +508,7 @@ Don't set the maintenance loader directly. Just register your own as a service.
 Just register them as your own service.
 
 Service                 | Scope
-------------------------+------------------
+------------------------|------------------
 `IConventionSet`        | Singleton
 `IAssemblyLoadEngine`   | Singleton
 `IAssemblySource`       | Singleton
