@@ -500,3 +500,17 @@ The library now uses `System.ComponentModel.DataAnnotations` for validation - fo
 ## `MigrationRunner.MaintenanceLoader` is read-only
 
 Don't set the maintenance loader directly. Just register your own as a service.
+
+# FAQ
+
+## How do I use my own `IConventionSet` (or other service)?
+
+Just register them as your own service.
+
+Service                 | Scope
+------------------------+------------------
+`IConventionSet`        | Singleton
+`IAssemblyLoadEngine`   | Singleton
+`IAssemblySource`       | Singleton
+`IMaintenanceLoader`    | Singleton
+`IMigrationSource`      | Singleton
