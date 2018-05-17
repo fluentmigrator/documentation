@@ -3,7 +3,7 @@ uid: migration-auto-reversing
 title: Auto-reversing migrations
 ---
 
-# Auth-reversing migrations
+# Auto-reversing migrations
 
 Auto reversing migrations are migrations that only contain an up command and FluentMigrator figures out the down command. Create a migration class that inherits from [AutoReversingMigration](xref:FluentMigrator.AutoReversingMigration) (instead of [Migration](xref:FluentMigrator.Migration)) to use this feature.
 
