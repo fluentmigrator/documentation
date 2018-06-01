@@ -42,6 +42,7 @@ FluentMigrator.DotNet.Cli | The .NET Core 2.1 executable that integrates into th
 
 # Upgrade guides
 
+* [3.0 to 3.1](xref:upgrade-guide-3.0-to-3.1)
 * [2.x to 3.0](xref:upgrade-guide-2.0-to-3.0)
 
 # Runners

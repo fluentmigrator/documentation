@@ -17,3 +17,4 @@ This is a collection of guides around FluentMigrator.
 
 * [1.6 to 2.0](xref:upgrade-guide-1.6-to-2.0)
 * [2.x to 3.0](xref:upgrade-guide-2.0-to-3.0)
+* [3.0 to 3.1](xref:upgrade-guide-3.0-to-3.1)

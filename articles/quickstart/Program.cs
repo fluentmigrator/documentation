@@ -36,7 +36,7 @@ namespace test
                     // Set the connection string
                     .WithGlobalConnectionString("Data Source=test.db")
                     // Define the assembly containing the migrations
-                    .WithMigrationsIn(typeof(AddLogTable).Assembly))
+                    .ScanIn(typeof(AddLogTable).Assembly).For.Migrations())
                 // Enable logging to console in the FluentMigrator way
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
                 // Build the service provider

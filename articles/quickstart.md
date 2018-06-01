@@ -27,6 +27,11 @@ dotnet add package FluentMigrator.Runner.SQLite
 dotnet add package Microsoft.Data.Sqlite
 ```
 
+> [!NOTE]
+> In versions older than 4.0, the `FluentMigrator.Runner` package
+> references all database-specific packages due to backwards
+> compatibility reasons.
+
 # Creating your first migration
 
 Create a file called `20180430_AddLogTable.cs` with the following contents:
