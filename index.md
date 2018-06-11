@@ -29,4 +29,5 @@ For the [current release](https://github.com/fluentmigrator/fluentmigrator/relea
 
 # More Information on FluentMigrator
 
+* [FAQ](xref:faq)
 * Sean Chambers on the [Herding Code podcast](http://herdingcode.com/herding-code-70)

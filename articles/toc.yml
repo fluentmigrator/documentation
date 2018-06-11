@@ -49,5 +49,7 @@
   topicHref: guides/overview.md
 - name: Technical
   href: technical/toc.yml
+- name: FAQ
+  href: xref:faq
 - name: Glossary
   href: xref:glossary

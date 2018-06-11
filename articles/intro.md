@@ -13,6 +13,7 @@ FluentMigrator.DotNet.Cli | The .NET Core 2.1 executable that integrates into th
 ## Getting Started
 
 * Check out the tour of FluentMigrator in our [Quickstart](xref:quickstart.md)
+* We also started a [FAQ](xref:faq)
 
 # Usage details
 
