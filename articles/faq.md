@@ -29,9 +29,29 @@ Use dynamic SQL:
     {
         public override void Up()
         {
+            /* Before you set the database to SINGLE_USER, verify that the AUTO_UPDATE_STATISTICS_ASYNC option is set to OFF. When this option is set to ON, the background thread that is used to update statistics takes a connection against the database, and you will be unable to access the database in single-user mode. For more information, see ALTER DATABASE SET Options (Transact-SQL). */
             this.Execute.Sql(@"
               DECLARE @DbName sysname = DB_NAME();
-              DECLARE @SqlCommand NVARCHAR(MAX) = 'USE [master]; SET DEADLOCK_PRIORITY; ALTER DATABASE [' + @DbName + ']' + ' SET SINGLE_USER WITH ROLLBACK IMMEDIATE;';
+              DECLARE @SqlCommand NVARCHAR(MAX) = '
+USE [master];
+SET DEADLOCK_PRIORITY 10;
+DECLARE @AutoUpdateStatisticsAsync BIT = CAST(0 AS BIT);
+IF EXISTS (
+    SELECT NULL
+    FROM sys.databases WHERE name = @DbName AND is_auto_update_stats_async_on = CAST(1 AS BIT)
+)
+BEGIN
+    ALTER DATABASE [' + @DbName + '] 
+    SET AUTO_UPDATE_STATISTICS_ASYNC OFF;
+    SET @AutoUpdateStatisticsAsync = CAST(1 AS BIT);
+END;
+ALTER DATABASE [' + @DbName + ']' + ' SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+IF (@AutoUpdateStatisticsAsync = 1)
+BEGIN
+    ALTER DATABASE [' + @DbName + '] 
+    SET AUTO_UPDATE_STATISTICS_ASYNC ON;
+END;
+';
               
               EXEC(@SqlCommand);
               SET @SqlCommand NVARCHAR(MAX) = 'USE [' + @DbName + ']';
