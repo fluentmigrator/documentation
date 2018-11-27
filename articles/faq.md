@@ -29,7 +29,13 @@ Use dynamic SQL:
     {
         public override void Up()
         {
-            /* Before you set the database to SINGLE_USER, verify that the AUTO_UPDATE_STATISTICS_ASYNC option is set to OFF. When this option is set to ON, the background thread that is used to update statistics takes a connection against the database, and you will be unable to access the database in single-user mode. For more information, see ALTER DATABASE SET Options (Transact-SQL). */
+            /* Before you set the database to SINGLE_USER, verify that
+            the AUTO_UPDATE_STATISTICS_ASYNC option is set to OFF. When
+            this option is set to ON, the background thread that is
+            used to update statistics takes a connection against the
+            database, and you will be unable to access the database in
+            single-user mode. For more information, see
+            ALTER DATABASE SET Options (Transact-SQL). */
             this.Execute.Sql(@"
               DECLARE @DbName sysname = DB_NAME();
               DECLARE @SqlCommand NVARCHAR(MAX) = '
