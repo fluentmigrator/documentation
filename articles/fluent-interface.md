@@ -91,7 +91,7 @@ Rename.Column("LastName").OnTable("Users").To("Surname");
 
 # Data Expressions
 
-Allows you to insert a row into a table using an anonymous type for the rows contents
+Allows you to insert a row into a table using an anonymous type for the row's contents
 
 ```cs
 Insert.IntoTable("Users").Row(new { FirstName = "John", LastName = "Smith" });
@@ -173,7 +173,7 @@ IfDatabase("Sqlite")
 
 # Schema.Exists Expressions
 
-You can write migrations conditional on the preexisting schema, which comes in handy for getting you out of certain jams. For instance, if you need to make a column but aren't sure if it already exists:
+You can write migrations conditional on the pre-existing schema, which comes in handy for getting you out of certain jams. For instance, if you need to make a column but aren't sure if it already exists:
 
 ```cs
 if (!Schema.Table("Users").Column("FirstName").Exists())

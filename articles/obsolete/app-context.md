@@ -27,7 +27,7 @@ var migrationContext = new FluentMigrator.Runner.Initialization.RunnerContext(an
 
 ## To use the ApplicationContext
 
-Inside your migration, you can access the context via `this.ApplicationContext`.  So for instance:
+Inside your migration, you can access the context via `this.ApplicationContext`. So for instance:
 
 ```cs
 if ((string)this.ApplicationContext == "MyArgument")

@@ -40,7 +40,7 @@ nuget install FluentMigrator.Console -ExcludeVersion
 Now, you can find the tool in the path `FluentMigrator[package-version]/tools/<target-framework>/[optional-platform/]Migrate.exe`.
 
 > [!NOTE]
-> The `package-verion` is only part of the path when the tool was installed using the Visual Studio package manager console.
+> The `package-version` is only part of the path when the tool was installed using the Visual Studio package manager console.
 
 > [!IMPORTANT]
 > Choose the correct `target-framework`. Otherwise, the tool might not be able to load your assembly.
