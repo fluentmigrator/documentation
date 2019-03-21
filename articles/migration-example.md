@@ -7,9 +7,9 @@ title: Migrations
 
 The basic unit of FM is the Migration abstract class. Your migrations will derive from this class and implement two methods. You also need to define the Migration attribute with a unique identifier.
 
-Commonly, this identifier is just an incrementing value, although the attribute accepts a Int64, some people use a numbered date format such as yyyyMMdd. The significance of this number is for the ordering of your migrations. Lower numbers execute first and then larger. It also provides a way to target a specific migration. Your migration class that you create is where you define the migrations to execute.
+Commonly, this identifier is just an incrementing value, although the attribute accepts an Int64, some people use a numbered date format such as yyyyMMdd. The significance of this number is for the ordering of your migrations. Lower numbers execute first and then larger. It also provides a way to target a specific migration. Your migration class that you create is where you define the migrations to execute.
 
-Migrations can be run out of sequence if they are checked in out of sequence. For example you may checkin migration 1, 3 and 5 in one build, and migration 2 in a later build. Migration 2 will still get run even though it is not later than the most recent migration because it has not been run before.
+Migrations can be run out of sequence if they are checked in out of sequence. For example you may check in migration 1, 3 and 5 in one build, and migration 2 in a later build. Migration 2 will still get run even though it is not later than the most recent migration because it has not been run before.
 
 Since you define both a UP and DOWN for each migration, it's possible to move forward and backwards in migrations at any point in time. The only caveat is that migrating down is destructive as tables and/or rows are being deleted in the process. Be sure to have a backup first if you want to keep the data
 

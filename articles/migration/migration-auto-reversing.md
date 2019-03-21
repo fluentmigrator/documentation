@@ -18,7 +18,7 @@ public class RenameTableWithSchema : AutoReversingMigration
 }
 ```
 
-FluentMigrator can  automatically figure out the down command and revert the rename. However, not all expressions are supported for auto reversing. For example, using the Execute expression to execute an sql script is impossible to reverse. Expressions that are currently supported for auto reversing are:
+FluentMigrator can automatically figure out the down command and revert the rename. However, not all expressions are supported for auto reversing. For example, using the Execute expression to execute an sql script is impossible to reverse. Expressions that are currently supported for auto reversing are:
 
 * Create.Table
 * Create.Column

@@ -7,7 +7,7 @@ FluentMigrator supports some extra functions that are specific to Sql Server onl
 
 # Adding the FluentMigrator.Runner assembly as a reference
 
-These extension methods are not included in the core dll so to get access them you have to add the FluentMigrator.Extensions.SqlServer package in your migrations project.The final step is to add the following using to your migration class:
+These extension methods are not included in the core dll so to get access them you have to add the FluentMigrator.Extensions.SqlServer package in your migrations project. The final step is to add the following using to your migration class:
 
 ```cs
 using FluentMigrator.SqlServer;

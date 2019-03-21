@@ -7,7 +7,7 @@ title: Upgrade Guide from 1.6 to 2.0
 
 # What is new?
 
-FluentMigrator finally gained .NET Standard 2.0 support and added serveral new database and migration expression features.
+FluentMigrator finally gained .NET Standard 2.0 support and added several new database and migration expression features.
 
 ## .NET Standard 2.0
 

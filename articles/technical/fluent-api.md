@@ -7,7 +7,7 @@ title: Fluent API
 
 The starting points for the fluent API are the following classes:
 
-- [MigrationBase](xref:FluentMigrator.MigrationBase): database modeling
+- [MigrationBase](xref:FluentMigrator.MigrationBase): database modelling
 - [Migration](xref:FluentMigrator.Migration): data modification and script execution
 
 # Supported expressions
