@@ -44,10 +44,15 @@ This will create a table named `Log` with the columns `Id`, and `Text`.
 
 You have two options to execute your migration:
 
-* Using an in-process runner (preferred when running from a single process)
-* Using an out-of-process runner (for some corporate requirements or when running from multiple processes)
+* Using an in-process runner (preferred)
+* Using an out-of-process runner (for some corporate requirements)
 
-## [In-Process (preferred when running from a single process)](#tab/runner-in-process)
+## [In-Process (preferred)](#tab/runner-in-process)
+
+> [!NOTE]
+> If you are potentially running migrations from multiple application servers, such as a load balanced set of web servers,
+> you will need to acquire a distributed and exclusive lock, either by database-dependent means or through the use of an
+> external distributed lock coordinator. [See the FAQ for more information](xref:faq#how-can-i-run-migrations-safely-from-multiple-application-servers).
 
 Change your `Program.cs` to the following code:
 
@@ -56,7 +61,7 @@ Change your `Program.cs` to the following code:
 As you can see, instantiating the [migration runner](xref:FluentMigrator.Runner.IMigrationRunner) (in `UpdateDatabase`) becomes
 very simple and updating the database is straight-forward.
 
-## [Out-of-process (for some corporate requirements or when running from multiple processes)](#tab/runner-dotnet-fm)
+## [Out-of-process (for some corporate requirements)](#tab/runner-dotnet-fm)
 
 > [!IMPORTANT]
 > You need at least the .NET Core 2.1 preview 2 SDK for this tool.
