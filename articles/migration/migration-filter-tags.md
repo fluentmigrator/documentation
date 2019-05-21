@@ -23,6 +23,54 @@ Tags are assigned to migrations with an attribute/s:
 public class DoSomeStuffToEuropeanStagingAndProdDbs : Migration { /* ... etc ... */ }
 ```
 
+# Inheriting Migration Tags
+
+Tag inheritance can apply to both base classes (single-inheritance) and interfaces (multiple-inheritance).
+
+Scenario: If you have a multiple contexts for which changes need to be applied, it can be less error-prone to inherit tags from a base class.
+
+```cs
+// Single-Inheritance of a base class
+[Tags("Development", "QA", "UAT")]
+public class NonProductionMigration : Migration { /* ... etc ... */ }
+
+public class ApplySomeNonProductionChanges : NonProductionMigration { /* ... etc ... */ }
+```
+
+Scenario: This is especially the case if you have common +AND+ divergent functionality that needs to be applied to multiple contexts. In this particular case, it is less error-prone to apply tags to one or more interfaces that may be combined. Consider the case of geographical database segregation whereby some functionality is applied to one or more instances based on geographical requirements.
+
+```cs
+// tagged interfaces
+[Tags("AL", "TX")]
+public interface IApplyToFeature1 { /* ... etc ... */ }
+
+[Tags("CA", "NV")]
+public interface IApplyToFeature2 { /* ... etc ... */ }
+
+[Tags("AL", "NV")]
+public interface IApplyToFeature3 { /* ... etc ... */ }
+
+[Tags("TX")]
+public interface IApplyToFeatureWithSynchronousResponse { /* ... etc ... */ }
+
+[Tags("AL", "NV")]
+public interface IApplyToFeatureWithAsynchronousQueueResponse { /* ... etc ... */ }
+
+[Tags("CA")]
+public interface IApplyToFeatureWithAsynchronousBatchResponse { /* ... etc ... */ }
+
+// Inheritance of interfaces
+public interface IApplyToFeatureWithAsynchronousResponses : IApplyToFeatureWithAsynchronousBatchResponse, IApplyToFeatureWithAsynchronousQueueResponse { /* ... etc ... */ }
+
+public class ApplySomeChangeToFeature1 : Migration, IApplyToFeature1 { /* ... etc ... */ }
+
+public class ApplySomeChangeToFeatures2And3 : Migration, IApplyToFeature2, IApplyToFeature3 { /* ... etc ... */ }
+
+public class ApplySomeChangeToFeatureWithAsynchronousResponses : Migration, IApplyToFeatureWithAsynchronousResponses { /* ... etc ... */ }
+```
+
+This allows for a Dev Ops pipeline that requires migrations based on a tag (in the case above, by state), and thus simplifying how to discern which migrations are applied based on that tag. This also means that creating a new database context for a state is a matter of deciding which features the new tag is associated with, and updating those relevant interfaces rather than having to add tags to all of the relevant migrations.
+
 # Filtering
 
 ## [`IMigrationRunner`](#tab/runner-internal)
