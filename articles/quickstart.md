@@ -6,9 +6,7 @@ title: Starting with FluentMigrator
 # Creating a project
 
 ```bash
-mkdir test
-cd test
-dotnet new console
+dotnet new console --name test
 ```
 
 # Adding the NuGet packages
