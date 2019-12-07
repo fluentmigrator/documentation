@@ -18,16 +18,16 @@ You can run the tool with `dotnet fm` or `dotnet-fm`. Use the latter version if 
 # Command structure
 
 ```
-dotnet-fm  -+- list -+- migrations  = List all available migrations
-            |        +- processors  = List all available processors
-            +- migrate              = Execute migrations
-            |  +- up                = Execute migrations
-            |  +- down              = Revert migrations
-            +- rollback             = Revert one migration
-            |  +- all               = Revert all migrations
-            |  +- by                = Revert <steps> migrations
-            |  +- to                = Revert migrations down to <version>
-            +- validate --- versions= Validate order of applied migrations
+dotnet-fm  -+- list -+- migrations   = List applied and pending migrations
+            |        +- processors   = List all available processors
+            +- migrate               = Apply all migrations
+            |  +- up                 = Apply migrations up to given version (inclusive)
+            |  +- down               = Apply migrations down to given version (exclusive)
+            +- rollback              = Rollback the last migration applied
+            |  +- all                = Rollback all migrations
+            |  +- by                 = Rollback by <n> steps
+            |  +- to                 = Rollback to given version
+            +- validate --- versions = Validate order of applied migrations
 ```
 
 # `list processors`
@@ -154,7 +154,7 @@ Applies the found migrations.
 
 ### `-t|--target <TARGET_VERSION>`
 
-The specific version to migrate to.
+The specific version to migrate to (inclusive).
 
 # `migrate down`
 
@@ -166,14 +166,62 @@ The specific version to revert to (exclusive).
 
 # Examples
 
+## List all available processors
+
+```bash
+dotnet fm list processors
+```
+
+## List applied and pending migrations
+
+```bash
+dotnet fm list migrations -p sqlite -c "Data Source=test.db" -a FluentMigrator.Example.Migrations.dll
+```
+
 ## Apply all migrations
 
-```
+```bash
 dotnet fm migrate -p sqlite -c "Data Source=test.db" -a FluentMigrator.Example.Migrations.dll
 ```
 
-## Apply migrations up to given version
+## Apply migrations up to given version (inclusive)
 
-```
+```bash
 dotnet fm migrate -p sqlite -c "Data Source=test.db" -a FluentMigrator.Example.Migrations.dll up -t 20090906205342
+```
+
+## Apply migrations down to given version (exclusive)
+
+```bash
+dotnet fm migrate -p sqlite -c "Data Source=test.db" -a FluentMigrator.Example.Migrations.dll down -t 20090906205342
+```
+
+## Rollback the last migration applied
+
+```bash
+dotnet fm rollback -p sqlite -c "Data Source=test.db" -a FluentMigrator.Example.Migrations.dll
+```
+
+## Rollback to given version
+
+```bash
+dotnet fm rollback -p sqlite -c "Data Source=test.db" -a FluentMigrator.Example.Migrations.dll to 20090906205342
+```
+
+## Rollback by `<n>` steps
+
+```bash
+dotnet fm rollback -p sqlite -c "Data Source=test.db" -a FluentMigrator.Example.Migrations.dll by 1
+```
+
+## Rollback all migrations
+
+```bash
+dotnet fm rollback -p sqlite -c "Data Source=test.db" -a FluentMigrator.Example.Migrations.dll all
+```
+
+## Validate order of applied migrations
+
+```bash
+dotnet fm validate versions -p sqlite -c "Data Source=test.db" -a FluentMigrator.Example.Migrations.dll
 ```
