@@ -164,6 +164,11 @@ Applies the found migrations.
 
 The specific version to revert to (exclusive).
 
+### `--strip:<true|false>`
+
+Whether comments should be stripped from SQL text prior to executing migration on server.
+Default is true; false will become the default in 4.x.
+
 # Examples
 
 ## Apply all migrations
