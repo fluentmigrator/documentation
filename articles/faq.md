@@ -103,3 +103,18 @@ async RunMigrationsWithDistributedLock(IMigrationRunner runner)
     // the lock is automatically released at the end of the using block
 }
 ```
+
+### How can I execute a stored procedure using Oracle?
+
+If you get `ORA-00900: Invalid SQL Statement` when executing a stored procedure, then chances are you need to wrap your stored procedure in a PLSQL block:
+
+```c#
+  Execute.Sql("DBMS_UTILITY.EXEC_DDL_STATEMENT('Create Index Member_AddrId On Member(AddrId)');");
+```
+becomes:
+```c#
+  Execute.Sql(@"
+BEGIN
+  DBMS_UTILITY.EXEC_DDL_STATEMENT('Create Index Member_AddrId On Member(AddrId)');
+END;");
+```
