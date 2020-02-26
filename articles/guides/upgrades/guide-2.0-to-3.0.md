@@ -75,7 +75,7 @@ This feature allows - for example - forbidding data deletions in a production en
 
 # Breaking Changes
 
-Version 3.0 dropped support for all .NET Framework versions below 4.6.1 and the timeout values are now stored as [TimeSpan](xref:System.TimeSpan).
+Version 3.0 dropped support for all .NET Framework versions below 4.6.1 and the timeout values are now stored as [TimeSpan](xref:System.TimeSpan) rather than an `int` (of seconds).
 
 ## Minimum: .NET Framework 4.6.1
 
@@ -88,7 +88,7 @@ Dropping the support for all .NET Framework versions below 4.6.1 was required, b
 
 ## `ProcessorOptions.Timeout` is now a [TimeSpan](xref:System.TimeSpan)
 
-This change is part of the ongoing effort to make the API easier to understand, because it might not be clear if an `int timeout` is the timeout in milliseconds, seconds, et cetera.
+This change is part of the ongoing effort to make the API easier to understand, because it might not be clear if an `int timeout` is the timeout in milliseconds, seconds, et cetera. Previously the `int` value corresponded to seconds.
 
 ## `ICanBeValidated` not used anymore
 
