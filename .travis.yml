@@ -1,11 +1,12 @@
 language: csharp
-dist: trusty
+dist: bionic
 mono: latest
 git:
   depth: false
-before_script:
+env:
+- DOCFX_TOOL="mono docfx.console/tools/docfx.exe"
+install:
 - nuget install docfx.console -ExcludeVersion
-- export DOCFX_TOOL="mono docfx.console/tools/docfx.exe"
 script:
 - $DOCFX_TOOL metadata docfx.json
 - $DOCFX_TOOL build docfx.json
