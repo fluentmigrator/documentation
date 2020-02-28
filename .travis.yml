@@ -1,6 +1,7 @@
 language: csharp
 dist: bionic
 mono: latest
+dotnet: 3.1.102
 git:
   depth: false
 env:
