@@ -7,7 +7,7 @@ git:
 env:
 - DOCFX_TOOL="mono docfx.console/tools/docfx.exe"
 install:
-- nuget install docfx.console -Version 2.48.1 -ExcludeVersion
+- nuget install docfx.console -Version 2.44.0 -ExcludeVersion
 script:
 - $DOCFX_TOOL metadata docfx.json
 - $DOCFX_TOOL build docfx.json
