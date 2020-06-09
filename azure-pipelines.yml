@@ -9,11 +9,46 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  docFxTool: 'mono docfx.console/tools/docfx.exe'
+
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: |
+    git submodule update --init --recursive
+  displayName: 'Update submodules (main fluentmigrator repo)'
+
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  displayName: 'Install docfx.console'
+  inputs:
+    command: 'custom'
+    arguments: 'install docfx.console -Version 2.44.0 -ExcludeVersion'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    $(docFxTool) metadata docfx.json
+    $(docFxTool) build docfx.json
+  displayName: 'Run DocFX build'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive _site folder'
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)/_site'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: 'site.zip'
+    replaceExistingArchive: true
+
+- task: CopyFiles@2
+  displayName: 'Copy output to build artifacts'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: 'site.zip'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish build artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
