@@ -5,6 +5,4 @@ the [docfx](https://github.com/dotnet/docfx) tool.
 
 You can find the published version of the documentation on [fluentmigrator.github.io](https://fluentmigrator.github.io).
 
-Build status:
-Travis: [![Build Status](https://travis-ci.com/fluentmigrator/documentation.svg?branch=master)](https://travis-ci.com/fluentmigrator/documentation)
-Azure Pipelines: [![Build Status](https://dev.azure.com/fluentmigrator/documentation/_apis/build/status/fluentmigrator.documentation?branchName=master)](https://dev.azure.com/fluentmigrator/documentation/_build/latest?definitionId=4&branchName=master)
+Build status: [![Build Status](https://dev.azure.com/fluentmigrator/documentation/_apis/build/status/fluentmigrator.documentation?branchName=master)](https://dev.azure.com/fluentmigrator/documentation/_build/latest?definitionId=4&branchName=master)
