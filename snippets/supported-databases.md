@@ -10,6 +10,7 @@ Microsoft SQL Server 2000 | SqlServer2000 | SqlServer
 Microsoft SQL Server Compact Edition | SqlServerCe | SqlServer
 PostgreSQL | Postgres | PostgreSQL
 PostgreSQL 9.2 | Postgres92 | PostgreSQL92
+PostgreSQL 10.0 | PostgreSQL10_0 | PostgreSQL
 MySQL 4 | MySql4 | MySql
 MySQL 5 | MySql5 | MySql, MariaDB
 Oracle  | Oracle |
