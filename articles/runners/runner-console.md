@@ -83,6 +83,10 @@ Output generated SQL to a file. Default is no output. Use outputFilename to cont
 
 The name of the file to output the generated SQL to. The output option must be included for output to be saved to the file.
 
+## `--outputSemicolonDelimiter, --outsemdel, -osd`
+
+SQL statements in output file are delimited with a semicolon.
+
 ## `--namespace, --ns=VALUE` (optional)
 
 The namespace that contains the migrations you want to run. Default is all migrations found within the Target Assembly will be run.
