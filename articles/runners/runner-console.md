@@ -83,7 +83,7 @@ Output generated SQL to a file. Default is no output. Use outputFilename to cont
 
 The name of the file to output the generated SQL to. The output option must be included for output to be saved to the file.
 
-## `--outputSemicolonDelimiter, --outsemdel, -osd`
+## `--outputSemicolonDelimiter, --outsemdel, -osd` (optional)
 
 SQL statements in output file are delimited with a semicolon.
 
