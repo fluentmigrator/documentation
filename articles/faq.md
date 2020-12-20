@@ -118,3 +118,55 @@ BEGIN
   DBMS_UTILITY.EXEC_DDL_STATEMENT('Create Index Member_AddrId On Member(AddrId)');
 END;");
 ```
+
+## How do I get the name of a SQL Server database?
+
+Not all databases have a "name". Writing migrations that use a name therefore cannot be truly database-agnostic. That said, the following will show an example of getting the name so that you can perform an `ALTER DATABASE` command.  Note that to `ALTER DATABASE [YourDatabaseName]`, you need to switch to the `[master]` database first via `USE [master]`.  Then, since FluentMigrator does not call `sp_reset_connection`, you need to switch back to the database being migrated.  If you do not, the ensuing migrations will be run in the wrong database!
+
+In the below example, we show how to enter a SQL Server database into single-user mode, in order to perform some maintenace tasks.
+
+Use dynamic SQL:
+```csharp
+    public class EnterDatabaseSingleUserModeState : Migration
+    {
+        public override void Up()
+        {
+            /* Before you set the database to SINGLE_USER, verify that
+            the AUTO_UPDATE_STATISTICS_ASYNC option is set to OFF. When
+            this option is set to ON, the background thread that is
+            used to update statistics takes a connection against the
+            database, and you will be unable to access the database in
+            single-user mode. For more information, see
+            ALTER DATABASE SET Options (Transact-SQL). */
+            this.Execute.Sql(@"
+              DECLARE @DbName sysname = DB_NAME();
+              DECLARE @SqlCommand NVARCHAR(MAX) = '
+USE [master];
+SET DEADLOCK_PRIORITY 10;
+DECLARE @AutoUpdateStatisticsAsync BIT = CAST(0 AS BIT);
+IF EXISTS (
+    SELECT NULL
+    FROM sys.databases WHERE name = @DbName AND is_auto_update_stats_async_on = CAST(1 AS BIT)
+)
+BEGIN
+    ALTER DATABASE [' + @DbName + '] 
+    SET AUTO_UPDATE_STATISTICS_ASYNC OFF;
+    SET @AutoUpdateStatisticsAsync = CAST(1 AS BIT);
+END;
+ALTER DATABASE [' + @DbName + ']' + ' SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+
+-- Here is where you put your administrative commands.
+
+IF (@AutoUpdateStatisticsAsync = 1)
+BEGIN
+    ALTER DATABASE [' + @DbName + '] 
+    SET AUTO_UPDATE_STATISTICS_ASYNC ON;
+END;
+';
+              
+              EXEC(@SqlCommand);
+              SET @SqlCommand NVARCHAR(MAX) = 'USE [' + @DbName + ']';
+              EXEC(@SqlCommand);
+            ");
+    }
+```
