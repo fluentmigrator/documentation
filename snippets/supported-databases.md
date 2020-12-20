@@ -1,6 +1,7 @@
 Database | Identifier | Alternative identifier(s)
 ---------|------------|---------------------------
-Microsoft SQL Server 2017 | SqlServer2016<sup>1)</sup> | SqlServer
+Microsoft SQL Server 2019 | SqlServer2017<sup>(1)</sup> | SqlServer
+Microsoft SQL Server 2017 | SqlServer2016<sup>(2)</sup> | SqlServer
 Microsoft SQL Server 2016 | SqlServer2016 | SqlServer
 Microsoft SQL Server 2014 | SqlServer2014 | SqlServer
 Microsoft SQL Server 2012 | SqlServer2012 | SqlServer
@@ -25,4 +26,5 @@ SAP SQL Anywhere | SqlAnywhere16 | SqlAnywhere
 DB2 | DB2 |
 DB2 iSeries | DB2 iSeries | DB2
 
-- <sup>1)</sup> All integration tests ran without error against an SQL Server 2017 using the SqlServer2016 dialect.
+- <sup>(1)</sup> All integration tests ran without error against an SQL Server 2019 using the SqlServer2016 dialect.
+- <sup>(2)</sup> All integration tests ran without error against an SQL Server 2017 using the SqlServer2016 dialect.
