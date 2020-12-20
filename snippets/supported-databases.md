@@ -8,9 +8,11 @@ Microsoft SQL Server 2008 | SqlServer2008 | SqlServer
 Microsoft SQL Server 2005 | SqlServer2005 | SqlServer
 Microsoft SQL Server 2000 | SqlServer2000 | SqlServer
 Microsoft SQL Server Compact Edition | SqlServerCe | SqlServer
-PostgreSQL | Postgres |
+PostgreSQL | Postgres | PostgreSQL
+PostgreSQL 9.2 | Postgres92 | PostgreSQL92
+PostgreSQL 10.0 | PostgreSQL10_0 | PostgreSQL
 MySQL 4 | MySql4 | MySql
-MySQL 5 | MySql5 | MySql
+MySQL 5 | MySql5 | MySql, MariaDB
 Oracle  | Oracle |
 Oracle (managed ADO.NET) | OracleManaged | Oracle
 Oracle (DotConnect ADO.NET) | OracleDotConnect | Oracle

@@ -31,7 +31,7 @@ parts:
 - Migrations
 - Version table metadata
 - Embedded resources
-- All of the parts above
+- All the parts above
 
 One `ScanIn` can be used to target multiple parts:
 
@@ -88,7 +88,7 @@ Oracle plans to release a non-beta version of the driver in Q3, but
 it's the only Oracle driver that works under Linux/MacOS. The console
 tool (`Migrate.exe`) is more Windows-centric and will therefore keep
 using the standard Oracle ADO.NET library. The `dotnet-fm` is mostly
-used on non-Windows platforms and is therefore predestinated to use
+used on non-Windows platforms and is therefore predestined to use
 the new beta driver.
 
 The statement from Oracle can be found on the

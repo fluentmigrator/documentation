@@ -1,11 +1,13 @@
 language: csharp
-dist: trusty
-mono: latest
+dist: xenial
+mono: 5.20.1
+dotnet: none
 git:
   depth: false
-before_script:
-- nuget install docfx.console -ExcludeVersion
-- export DOCFX_TOOL="mono docfx.console/tools/docfx.exe"
+env:
+- DOCFX_TOOL="mono docfx.console/tools/docfx.exe"
+install:
+- nuget install docfx.console -Version 2.44.0 -ExcludeVersion
 script:
 - $DOCFX_TOOL metadata docfx.json
 - $DOCFX_TOOL build docfx.json

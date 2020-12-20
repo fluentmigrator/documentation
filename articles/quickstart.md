@@ -6,9 +6,7 @@ title: Starting with FluentMigrator
 # Creating a project
 
 ```bash
-mkdir test
-cd test
-dotnet new console
+dotnet new console --name test
 ```
 
 # Adding the NuGet packages
@@ -48,6 +46,11 @@ You have two options to execute your migration:
 * Using an out-of-process runner (for some corporate requirements)
 
 ## [In-Process (preferred)](#tab/runner-in-process)
+
+> [!NOTE]
+> If you are potentially running migrations from multiple application servers, such as a load balanced set of web servers,
+> you will need to acquire a distributed and exclusive lock, either by database-dependent means or through the use of an
+> external distributed lock coordinator. [See the FAQ for more information](xref:faq#how-can-i-run-migrations-safely-from-multiple-application-servers).
 
 Change your `Program.cs` to the following code:
 

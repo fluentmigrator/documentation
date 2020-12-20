@@ -34,9 +34,9 @@ The kind of database you are migrating against. Available choices are:
 
 The connection string to the server and database you want to execute your migrations against. This can be a full connection string or the name of the connection string stored in a config file.
 
-When specifying a named connection string, FluentMigrator searchs for it in this order:
+When specifying a named connection string, FluentMigrator searches for it in this order:
 
-1. The specified config file via `--connectionStringConfigPath`](#cscp)` parameter
+1. The specified config file via `--connectionStringConfigPath`](#cscp) parameter
 2. Target assembly's config file
 3. Machine.config config file
 
@@ -65,7 +65,7 @@ The task you want FluentMigrator to perform. Available choices are:
 * `migrate` (same as migrate:up)
 * `migrate:down` (used in conjunction with the `--version` switch. *Warning:* if you don't supply `--version` this will revert _all_ migrations)
 * `rollback` (per default this rollbacks one step. Use the `--steps` switch to rollback more steps)
-* `rollback:toversion` (used in conjuction with the `--version` switch. Will rollback all versions down to the specified version, not including the specified version. The Migration attribute contains the version that should be used with the `--version` switch.)
+* `rollback:toversion` (used in conjunction with the `--version` switch. Will rollback all versions down to the specified version, not including the specified version. The Migration attribute contains the version that should be used with the `--version` switch.)
 * `rollback:all`
 * `listmigrations`
 
@@ -82,6 +82,10 @@ Output generated SQL to a file. Default is no output. Use outputFilename to cont
 ## `--outputFilename, --outfile, --of=VALUE` (optional)
 
 The name of the file to output the generated SQL to. The output option must be included for output to be saved to the file.
+
+## `--outputSemicolonDelimiter, --outsemdel, -osd` (optional)
+
+SQL statements in output file are delimited with a semicolon.
 
 ## `--namespace, --ns=VALUE` (optional)
 
@@ -129,7 +133,7 @@ The default transaction is one transaction per migration so the default for this
 
 ## `--stopOnError`
 
-Pauses migration execution until the user input if any error occured. Default is false.
+Pauses migration execution until the user input if any error occurred. Default is false.
 
 ## `--allow-breaking-changes`
 

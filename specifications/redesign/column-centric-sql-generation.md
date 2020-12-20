@@ -33,4 +33,4 @@ Just some random ideas:
 # Open questions
 
 - Maybe different API for all three use cases?
-- How to handle the seconday use cases?
+- How to handle the secondary use cases?

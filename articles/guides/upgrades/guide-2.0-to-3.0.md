@@ -75,7 +75,7 @@ This feature allows - for example - forbidding data deletions in a production en
 
 # Breaking Changes
 
-Version 3.0 dropped support for all .NET Framework versions below 4.6.1 and the timeout values are now stored as [TimeSpan](xref:System.TimeSpan).
+Version 3.0 dropped support for all .NET Framework versions below 4.6.1 and the timeout values are now stored as [TimeSpan](xref:System.TimeSpan) rather than an `int` (of seconds).
 
 ## Minimum: .NET Framework 4.6.1
 
@@ -88,7 +88,7 @@ Dropping the support for all .NET Framework versions below 4.6.1 was required, b
 
 ## `ProcessorOptions.Timeout` is now a [TimeSpan](xref:System.TimeSpan)
 
-This change is part of the ongoing effort to make the API easier to understand, because it might not be clear if an `int timeout` is the timeout in milliseconds, seconds, etc..
+This change is part of the ongoing effort to make the API easier to understand, because it might not be clear if an `int timeout` is the timeout in milliseconds, seconds, et cetera. Previously the `int` value corresponded to seconds.
 
 ## `ICanBeValidated` not used anymore
 
@@ -303,7 +303,7 @@ The factories aren't needed anymore. The registered services provide everything 
 
 ## [IRunnerContext](xref:FluentMigrator.Runner.Initialization.IRunnerContext) and [RunnerContext](xref:FluentMigrator.Runner.Initialization.RunnerContext)
 
-This properties of this interface/class were refactored into several classes.
+The properties of this interface/class were refactored into several classes.
 
 ### Properties moved into [RunnerOptions](xref:FluentMigrator.Runner.Initialization.RunnerOptions)
 
@@ -417,7 +417,7 @@ which is configured using the [SelectingProcessorAccessorOptions](xref:FluentMig
 > is used.
 
 > [!NOTE]
-> When neiter a processor nor generator ID was specified, then the added processor
+> When neither a processor nor generator ID was specified, then the added processor
 > will be used - but only where there is only one! When no processor or more than
 > one was specified, then an exception gets thrown.
 
@@ -460,7 +460,7 @@ which is configured using the [SelectingGeneratorAccessorOptions](xref:FluentMig
 > is used.
 
 > [!NOTE]
-> When neiter a generator nor processor ID was specified, then the added generator
+> When neither a generator nor processor ID was specified, then the added generator
 > will be used - but only where there is only one! When no generator or more than
 > one was specified, then an exception gets thrown.
 

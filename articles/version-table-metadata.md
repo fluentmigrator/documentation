@@ -16,7 +16,7 @@ Property | Default value | Description
 [AppliedOnColumnName](xref:FluentMigrator.Runner.VersionTableInfo.IVersionTableMetaData.AppliedOnColumnName) | `"AppliedOn"` | The datetime of when the last migration was applied
 [UniqueIndexName](xref:FluentMigrator.Runner.VersionTableInfo.IVersionTableMetaData.UniqueIndexName) | `"UC_Version"` | The name of the unique constraint for the version column
 
-In the same assembly that your migrations are located, create a new class (it has to be public) that implements the [IVersionTableMetaData](xref:FluentMigrator.Runner.VersionTableInfo.IVersionTableMetaData) interface and decorate the class with the [VersionTableMetaDataAttribute](xref:FluentMigrator.Runner.VersionTableInfo.VersionTableMetaDataAttribute). FluentMigrator will automatically find this and use it instead of the default settings.
+In the same assembly that your migrations are located, create a new class (it must be public) that implements the [IVersionTableMetaData](xref:FluentMigrator.Runner.VersionTableInfo.IVersionTableMetaData) interface and decorate the class with the [VersionTableMetaDataAttribute](xref:FluentMigrator.Runner.VersionTableInfo.VersionTableMetaDataAttribute). FluentMigrator will automatically find this and use it instead of the default settings.
 
 > [!NOTE]
 > The custom [IVersionTableMetaData](xref:FluentMigrator.Runner.VersionTableInfo.IVersionTableMetaData) is filtered by the values in the [TypeFilterOptions](xref:FluentMigrator.Runner.Initialization.TypeFilterOptions). This allows different [IVersionTableMetaData](xref:FluentMigrator.Runner.VersionTableInfo.IVersionTableMetaData) for every database.
