@@ -16,6 +16,8 @@
   items:
   - name: Database functions as default value
     href: xref:db-functions
+  - name: Postgres Extensions
+    href: xref:postgres-extensions.md
   - name: SQL Server Extensions
     href: xref:sql-server-extensions.md
   - name: Using raw SQL
