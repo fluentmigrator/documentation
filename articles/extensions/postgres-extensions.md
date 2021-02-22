@@ -25,7 +25,7 @@ Create.Index()
 ```
 
 
-Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres11_0.
+Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres11_0 or higher.
 
 ```cs
  var service = new ServiceCollection()
@@ -181,24 +181,7 @@ Create.Index()
     .VacuumCleanupIndexScaleFactor(12.0f);
 ```
 
-### GiST
-
-The exclusive index storage parameters for GiST index method.
-
-### Buffering
-
-Building large GiST indexes by simply inserting all the tuples tends to be slow, because if the index tuples are scattered across the index and the index is large enough to not fit in cache, the insertions need to perform a lot of random I/O. Beginning in version 9.2, PostgreSQL supports a more efficient method to build GiST indexes based on buffering, which can dramatically reduce the number of random I/Os needed for non-ordered data sets. For well-ordered data sets the benefit is smaller or non-existent, because only a small number of pages receive new tuples at a time, and those pages fit in cache even if the index as whole does not.
-
-For more information about Vacuum cleanup index scale factor see [here](https://www.postgresql.org/docs/current/gist-implementation.html#GIST-BUFFERING-BUILD)
-
-```cs
-Create.Index()
-    .OnTable("TestTable")
-    .Column("Id").Ascending()
-    .WithOptions()
-    .UsingBTree() 
-    .VacuumCleanupIndexScaleFactor(12.0f);
-```
+Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres11_0 or higher.
 
 ### GiST
 
@@ -218,6 +201,9 @@ Create.Index()
     .UsingGist()
     .Buffering(GistBuffering.Auto)
 ```
+
+Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres10_0.
+
 
 ### GIN
 
@@ -262,6 +248,8 @@ Create.Index()
     .PendingListLimit(1_000)
 ```
 
+Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres10_0 or higher.
+
 ### BRIN
 
 The exclusive index storage parameters for BRIN index method.
@@ -281,6 +269,8 @@ Create.Index()
     .UsingBrin()
     .PagesPerRange(127)
 ```
+
+Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres10_0 or higher.
 
 ### Autosummarize
 
@@ -305,3 +295,5 @@ Create.Index()
     .UsingBrin()
     .DisableAutosummarize()
 ```
+
+Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres10_0 or higher.
