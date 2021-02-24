@@ -59,16 +59,13 @@ Create.Index()
     .Using(Algorithm.Gin);
 ```
 
-Notes: Dependend on the index method could or couldn't support some feature, for sample Hash index method doesn't support multi-column. For more information about index method limitation see [here](https://www.postgresql.org/docs/current/sql-createindex.html) in Notes parts
+Notes: Dependend on the index method could or couldn't support some feature, for sample Hash index method doesn't support multi-column. For more information about index method limitation see [here](https://www.postgresql.org/docs/current/sql-createindex.html) in Notes parts.
 
 
 ## Concurrently
 
-When this option is used, PostgreSQL will build the index without taking any locks that prevent concurrent inserts, updates, or deletes on the table. Whereas a standard index build locks out writes (but not reads) on the table until it's done. For more information about index method see [here](https://www.postgresql.org/docs/current/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY)
+When this option is used, PostgreSQL will build the index without taking any locks that prevent concurrent inserts, updates, or deletes on the table. Whereas a standard index build locks out writes (but not reads) on the table until it's done. For more information about index method see [here](https://www.postgresql.org/docs/current/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY).
 
-
-### Notes
-For to be able to use this feature is necessary remove the transaction from migrations, because PostgeSQLd doesn't support create concurrently index with transaction
 
 ```cs
 Create.Index()
@@ -77,6 +74,8 @@ Create.Index()
     .WithOptions()
     .AsConcurrently();
 ```
+### Notes
+For to be able to use this feature is necessary remove the transaction from migrations, because PostgeSQLd doesn't support create concurrently index with transaction.
 
 ## Only
 
@@ -94,6 +93,11 @@ Create.Index()
 
 Specifies that column should be sort before or after non-nulls. 
 
+```cs
+Create.Index()
+    .OnTable("TestTable")
+    .Column("Id").Ascending().Nulls(NullSort.First);
+```
 
 ### Nulls First
 
@@ -103,13 +107,6 @@ Create.Index()
     .OnTable("TestTable")
     .Column("Id").Ascending().NullsFirst()
 ```
-
-```cs
-Create.Index()
-    .OnTable("TestTable")
-    .Column("Id").Ascending().Nulls(NullSort.First);
-```
-
 
 ### Nulls Last
 
@@ -121,15 +118,9 @@ Create.Index()
     .Column("Id").Ascending().NullsLast()
 ```
 
-```cs
-Create.Index()
-    .OnTable("TestTable")
-    .Column("Id").Ascending().Nulls(NullSort.Last);
-```
-
 ## Partial Indexes (WHERE/Filter)
 
-A partial index is an index built over a subset of a table; the subset is defined by a conditional expression (called the predicate of the partial index). The index contains entries only for those table rows that satisfy the predicate. For more information about index method see [here](https://www.postgresql.org/docs/current/indexes-partial.html)
+A partial index is an index built over a subset of a table; the subset is defined by a conditional expression (called the predicate of the partial index). The index contains entries only for those table rows that satisfy the predicate. For more information about index method see [here](https://www.postgresql.org/docs/current/indexes-partial.html).
 
 
 ```cs
@@ -145,7 +136,6 @@ Create.Index()
 
 Each index method has its own set of allowed storage parameters. For more information about index storageparameters see [here](https://www.postgresql.org/docs/current/sql-createindex.html#SQL-CREATEINDEX-STORAGE-PARAMETERS)
 
-For all index method:
 
 ### Fillfactor
 
@@ -160,7 +150,7 @@ Create.Index()
     .Fillfactor(100);
 ```
 
-Notes: In case you use Fillfactor without have select B-Tree we are going to assume that you are using B-Tree (the defautl index method) and the release B-Tree index storage.
+Notes: In case you use Fillfactor without have select an index method we are going to assume that you are using B-Tree (the defautl index method) and the release B-Tree index storage.
 
 ### B-Tree
 
@@ -168,7 +158,7 @@ The exclusive index storage parameters for B-Tree index method.
 
 ### Vacuum cleanup index scale factor
 
-Specifies the fraction of the total number of heap tuples counted in the previous statistics collection that can be inserted without incurring an index scan at the VACUUM cleanup stage. The value can range from 0 to 10000000000. When vacuum_cleanup_index_scale_factor is set to 0, index scans are never skipped during VACUUM cleanup. The default value is 0.1. 
+Specifies the fraction of the total number of heap tuples counted in the previous statistics collection that can be inserted without incurring an index scan at the VACUUM cleanup stage. The value can range from 0 to 10_000_000_000. When vacuum_cleanup_index_scale_factor is set to 0, index scans are never skipped during VACUUM cleanup. The default value is 0.1. 
 
 For more information aboutVacuum cleanup index scale factor see [here](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-VACUUM-CLEANUP-INDEX-SCALE-FACTOR)
 
@@ -181,7 +171,7 @@ Create.Index()
     .VacuumCleanupIndexScaleFactor(12.0f);
 ```
 
-Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres11_0 or higher.
+Note: This feature was implement on Postgres 11, if you want to use it is necessary use Postgres11_0 or higher.
 
 ### GiST
 
@@ -202,7 +192,7 @@ Create.Index()
     .Buffering(GistBuffering.Auto)
 ```
 
-Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres10_0.
+Note: This feature was implement on Postgres 11, if you want to use it is necessary use Postgres10_0.
 
 
 ### GIN
@@ -248,7 +238,7 @@ Create.Index()
     .PendingListLimit(1_000)
 ```
 
-Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres10_0 or higher.
+Note: This feature was implement on Postgres 11, if you want to use it is necessary use Postgres10_0 or higher.
 
 ### BRIN
 
@@ -270,7 +260,7 @@ Create.Index()
     .PagesPerRange(127)
 ```
 
-Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres10_0 or higher.
+Note: This feature was implement on Postgres 11, if you want to use it is necessary use Postgres10_0 or higher.
 
 ### Autosummarize
 
@@ -296,4 +286,4 @@ Create.Index()
     .DisableAutosummarize()
 ```
 
-Note: This feature was implement on Postgres 11, with you want to use it is necessary use Postgres10_0 or higher.
+Note: This feature was implement on Postgres 11, if you want to use it is necessary use Postgres10_0 or higher.
