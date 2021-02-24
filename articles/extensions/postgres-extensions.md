@@ -192,7 +192,7 @@ Create.Index()
     .Buffering(GistBuffering.Auto)
 ```
 
-Note: This feature was implement on Postgres 11, if you want to use it is necessary use Postgres10_0.
+Note: This feature was implement on Postgres 10, if you want to use it is necessary use Postgres10_0.
 
 
 ### GIN
@@ -238,7 +238,7 @@ Create.Index()
     .PendingListLimit(1_000)
 ```
 
-Note: This feature was implement on Postgres 11, if you want to use it is necessary use Postgres10_0 or higher.
+Note: This feature was implement on Postgres 10, if you want to use it is necessary use Postgres10_0 or higher.
 
 ### BRIN
 
@@ -260,7 +260,7 @@ Create.Index()
     .PagesPerRange(127)
 ```
 
-Note: This feature was implement on Postgres 11, if you want to use it is necessary use Postgres10_0 or higher.
+Note: This feature was implement on Postgres 10, if you want to use it is necessary use Postgres10_0 or higher.
 
 ### Autosummarize
 
@@ -286,4 +286,4 @@ Create.Index()
     .DisableAutosummarize()
 ```
 
-Note: This feature was implement on Postgres 11, if you want to use it is necessary use Postgres10_0 or higher.
+Note: This feature was implement on Postgres 10, if you want to use it is necessary use Postgres10_0 or higher.
