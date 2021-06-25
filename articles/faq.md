@@ -14,6 +14,10 @@ Possible reasons:
 - Migration class isn't attributed with `MigrationAttribute`
 - The versions of the `Migrate.exe` tool (`FluentMigrator.Console` package) and the `FluentMigrator` package(s) referenced in your project are different.
 
+## How can I run FluentMigrator.DotNet.Cli with a .NET 5.0 assembly?
+
+The FluentMigrator.DotNet.Cli contains an `--allowDirtyAssemblies` switch that will allow you to load your 5.0 assemblies in a .NET Core 3.1 context.  We're working on .NET 5.0 support.
+
 ## What are the supported databases?
 
 [!include[Supported databases](../snippets/supported-databases.md)]
