@@ -35,6 +35,17 @@ dotnet-fm  -+- list -+- migrations   = List applied and pending migrations
 Shows all available processor identifiers to be used by the `-p`
 or `--processor` command line switch.
 
+# .NET Runtime related switches
+
+### `--allowDirtyAssemblies` switch
+
+Overrides the default .NET Assembly Loading logic, allowing you to load assemblies written for other versions of the .NET runtime.
+This is primarily intended for developers working on preview releases of the next version of the .NET runtime, but can be used by others as a workaround for assembly not found errors.  In particular, it is possible to have a "diamond dependency" where some dependencies have higher assembly versions than the one FluentMigrator uses.
+
+For example, suppose FluentMigrator.DotNet.Cli ships with a particular version of System.ComponentModel.DataAnnotations.  Further suppose that you have a private enterprise nuget package repository that has re-usable FluentMigrator extension methods, which transitively references a different verison of System.ComponentModel.DataAnnotations.  There are only two possible ways you can call such an extension method: (1) implement your own FluentMigrator.DotNet.Cli tool and directly package your migrations DLL with the tool so that the MSBuild Microsoft.NET.Sdk correctly builds a project.deps.json used to resolve the right assembly (2) use this `--allowDirtyAssemblies` switch.
+
+As another example, suppose FluentMigrator has not yet shipped a .NET vNext compatible binary, but you want to work with that binary.  The `--allowDirtyAssemblies` switch will help resolve the `System.Runtime` assembly.
+
 # Connection related commands
 
 The following commands need a processor id and/or a connection:
