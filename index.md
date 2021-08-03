@@ -6,7 +6,8 @@ Fluent Migrator is a migration framework for .NET much like Ruby on Rails Migrat
 
 1. Database-agnostic migrations: [Quickstart](xref:quickstart.md)
 2. Database-specific migrations:
-  1. [SQL Server Quickstart](xref:sql-server-quickstart.md)
+  1. [SQL Server Extensions](xref:sql-server-extensions.md)
+  2. [Postgres Extensions](xref:postgres-extensions.md)
 3. [Frequently Asked Questions](xref:faq)
 
 # What does it look like?
