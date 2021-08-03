@@ -139,6 +139,10 @@ Pauses migration execution until the user input if any error occurred. Default i
 
 Allows execution of migrations marked as breaking changes. Default is false.
 
+## `--strip-`
+
+Disables stripping of comments from executed SQL.  Note the `-` at the end of the command.
+
 ## `--help, -h, -?`
 
 Displays help menu.
