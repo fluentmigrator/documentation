@@ -11,7 +11,13 @@ It is possible to set the default value when creating or altering a column. To j
 Create.Table("TestTable").WithColumn("Name").AsString().Nullable().WithDefaultValue("test");
 ```
 
-However, you can take advantage of some database functions to set the default value. The SystemMethods enum contains five database functions:
+In addition, in the event you want to pass in arbitrary SQL to the `WithDefaultValue` method, you can do so using [raw sql](xref:raw-sql.md]:
+
+```cs
+Create.Table("TestTable").WithColumn("Name").AsString().Nullable().WithDefaultValue(RawSql.Insert("SYSUTCDATETIME()"));
+```
+
+However, you can take advantage of some database functions to set the default value. The `SystemMethods` enum contains five database functions:
 
 Function                    | Description
 ----------------------------|------------------------------------------------
