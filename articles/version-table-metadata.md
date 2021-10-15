@@ -24,7 +24,7 @@ In the same assembly that your migrations are located, create a new class (it mu
 A common use case is changing the default schema so that you can have a migration assembly per schema. 
 
 ```c#
-using FluentMigrator.VersionTableInfo;
+using FluentMigrator.Runner.VersionTableInfo;
 
 namespace Migrations
 {
