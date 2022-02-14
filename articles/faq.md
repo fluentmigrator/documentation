@@ -174,3 +174,7 @@ END;
             ");
     }
 ```
+
+## Certificate error for SQL Connection
+
+Since the use of `Microsoft.Data.SqlClient` version `4.0.0` connections are encrypted by default in .NET. You might start getting the exception: `A connection was successfully established with the server, but then an error occurred during the login process. (provider: SSL Provider, error: 0 - The certificate chain was issued by an authority that is not trusted.)`. If fixing a valid certificate isn't a feasable path, you can always disable the encryption by adding `Encrypt=False` to the connection string. Then the connection won't be encryptet, and thus no certificate needed. As a note; you can also add `TrustServerCertificate=True` to the connection string, if you have a self-signed certificate or similar. But it's probably a better idea to fix a real certificate, or skip encryption all together.
