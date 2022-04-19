@@ -71,7 +71,6 @@ public class TestCreateAndDropTableMigration: Migration
 
 ```
 
-Note that if you use SQL Server identity columns with [WithIdentityInsert](xref:sql-server-extensions.md#withidentityinsert), FluentMigrator provides an extension method for this
-
+Note that if you use SQL Server identity columns, you should also use FluentMigrator's [WithIdentityInsert](xref:sql-server-extensions.md#withidentityinsert) clause for inserting data.
 
 Diving further into FM, we look at the [Fluent Interface](xref:fluent-interface.md) to make more useful migrations.
