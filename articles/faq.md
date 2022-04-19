@@ -179,10 +179,10 @@ END;
 
 Since the use of `Microsoft.Data.SqlClient` version `4.0.0` connections are encrypted by default in .NET. You might start getting the exception: `A connection was successfully established with the server, but then an error occurred during the login process. (provider: SSL Provider, error: 0 - The certificate chain was issued by an authority that is not trusted.)`. If fixing a valid certificate isn't a feasable path, you can always disable the encryption by adding `Encrypt=False` to the connection string. Then the connection won't be encryptet, and thus no certificate needed. As a note; you can also add `TrustServerCertificate=True` to the connection string, if you have a self-signed certificate or similar. But it's probably a better idea to fix a real certificate, or skip encryption all together.
 
-## SQLite specific topcis
+## SQLite specific topics
 
 ### Connection Pooling
 
-When working with FluentMigrator with the SQLite processor it's worth knowing that by default SQLite will run with connection pooling enabled and with connectio pooling enabled SQLite will keep a lock on the database file even after `connection.Close()` is called on the relevant DB connection. This is important to know in case you need to perform any cleanup after FluentMigrator has run where deleting the database file is required. In this scenario you would receive an IO exception when you attempt to delete the file as SQLite still has a lock on the file.
+When working with FluentMigrator with the SQLite processor, by default SQLite will run with connection pooling enabled.  When connection pooling is enabled, SQLite will keep a lock on the database file even after `connection.Close()` is called on the relevant DB connection. This is important to know in case you need to perform any cleanup after FluentMigrator has run where deleting the database file is required. In this scenario you would receive an IO exception if you attempt to delete or move the file as SQLite still has a lock on the file.
 
-You can disable connection pooling however by adding `Pooling=False;` as a parameter in your connection string. With pooling disabled, you can then safely delete the database after the FluentMigrator processor is disposed.
+You can disable connection pooling however by adding `Pooling=False;` as a parameter in your connection string. With pooling disabled, you can then safely delete or move the database after the FluentMigrator processor is disposed.
