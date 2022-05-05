@@ -9,6 +9,7 @@ Fluent Migrator is a migration framework for .NET much like Ruby on Rails Migrat
     1. [SQL Server Extensions](xref:sql-server-extensions.md)
     2. [Postgres Extensions](xref:postgres-extensions.md)
 3. [Frequently Asked Questions](xref:faq)
+4. [FluentMigrator Comparison to Entity Framework Core Migrations](xref:comparison-to-entity-framework-migrations)
 
 # What does it look like?
 
