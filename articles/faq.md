@@ -16,7 +16,18 @@ Possible reasons:
 
 ## How can I run FluentMigrator.DotNet.Cli with a .NET 5.0 assembly?
 
-The FluentMigrator.DotNet.Cli contains an `--allowDirtyAssemblies` switch that will allow you to load your 5.0 assemblies in a .NET Core 3.1 context.  We're working on .NET 5.0 support.
+The FluentMigrator.DotNet.Cli contains an `--allowDirtyAssemblies` switch that will allow you to load your 5.0 assemblies in a .NET Core 3.1 context.  We're working on .NET 5.0 support.'
+
+## Why do I get `System.IO.FileLoadException: Could not load file or assembly 'FluentMigrator ...`?
+
+If you get a stack trace like the following:
+```
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.IO.FileLoadException: Could not load file or assembly 'FluentMigrator, Version=3.2.1.0, Culture=neutral, PublicKeyToken=aacfc7de5acabf05". Could not find or load specific file.
+```
+
+Then the most likely explanation is that you installed the FluentMigrator.DotNet.Cli command line tool globally, with a specific FluentMigrator.dll version in your global tool directory, and are loading a migrations assembly that references a different version of FluentMigrator.dll.
+
+The common workaround is to install the tool locally, rather than globally (applies to .NET Core SDK 3.0 and later).
 
 ## What are the supported databases?
 
