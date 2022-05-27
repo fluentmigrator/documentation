@@ -50,6 +50,18 @@ Use `.AsAnsiString(int.MaxValue)` for `varchar(MAX)`:
 Create.Column("Name").OnTable("TestTable").AsAnsiString(int.MaxValue);
 ```
 
+Alternatively, you can define an extension method for use with `Create.Table` syntax, which would then be visible in the Visual Studio IntelliSense code completion dropdown:
+
+```cs
+public static class ICreateTableColumnAsTypeSyntaxExtensions
+{
+    public static ICreateTableColumnOptionOrWithColumnSyntax AsMaxString(this ICreateTableColumnAsTypeSyntax createTableColumnAsTypeSyntax)
+    {
+        return createTableColumnAsTypeSyntax.AsString(int.MaxValue);
+    }
+}
+```
+
 ## WithIdentityInsert
 
 If you want to turn on Identity Insert to be able to insert values into an identity column (see [here](http://msdn.microsoft.com/en-us/library/ms188059.aspx) for more details) then FluentMigrator has an extension method that supports this.
