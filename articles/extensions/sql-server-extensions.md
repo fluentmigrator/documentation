@@ -36,6 +36,20 @@ Create.UniqueConstraint("UQ").OnTable("TestTable").Column("Name").Clustered();
 
 Note: You have to create the primary key index or unique constraint separately from the Create.Table expression to be able to specify them as clustered or non-clustered.
 
+## Create a column of SQL data type `nvarchar(MAX)` / `varchar(MAX)`
+
+Use `int.MaxValue` to represent infinite length strings.
+
+```cs
+Create.Column("Name").OnTable("TestTable").AsString(int.MaxValue);
+```
+
+Use `.AsAnsiString(int.MaxValue)` for `varchar(MAX)`:
+
+```cs
+Create.Column("Name").OnTable("TestTable").AsAnsiString(int.MaxValue);
+```
+
 ## WithIdentityInsert
 
 If you want to turn on Identity Insert to be able to insert values into an identity column (see [here](http://msdn.microsoft.com/en-us/library/ms188059.aspx) for more details) then FluentMigrator has an extension method that supports this.
