@@ -121,7 +121,11 @@ The directory to load SQL scripts specified by migrations from.
 
 ## `--tag=VALUE`
 
-Filters migrations to be run based on tags. See [Filter migrations run based on tags](xref:migration-filter-tags)
+Filters migrations to be run based on tags. See [Filter migrations run based on tags](xref:migration-filter-tags). See also `--include-untagged` option.
+
+## `--include-untagged`
+
+Includes untagged migrations. By default, if you use `--tag=VALUE` to filter migrations to be run based on tags, untagged migrations will be excluded.
 
 ## `--context=VALUE`
 
