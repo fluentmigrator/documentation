@@ -20,6 +20,15 @@ Those are migrations that should always be executed at a specified stage.
 > * [IMigration](xref:FluentMigrator.IMigration) as implemented interface (The [Migration class](xref:FluentMigrator.Migration) already implements it)
 > * [MaintenanceAttribute](xref:FluentMigrator.MaintenanceAttribute)
 
+## Migration Stages
+
+
+1. `BeforeAll`: Migration will be run before all standard migrations.
+2. `BeforeEach`: Migration will be run before each standard migration.
+3. `AfterEach`: Migration will be run after each standard migration.
+4. `BeforeProfiles`: Migration will be run after all standard migrations, but before profiles.
+5. `AfterAll`: Migration will be run after all standard migrations and profiles.    
+
 # Migration
 
 A migration is a database modification usually applied within its own transaction.
