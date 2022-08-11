@@ -42,7 +42,7 @@ When specifying a named connection string, FluentMigrator searches for it in thi
 
 ## `--connectionStringConfigPath, --configPath=VALUE`
 
-The path of the config file where the connection string named by is found. This parameter is used together with the `--connectionString` parameter, the `--connectionString` parameter specifies the name of the connection string in the config file. If the config file looks like this:
+The absolute path of the config file where the connection string named by is found. This parameter is used together with the `--connectionString` parameter, the `--connectionString` parameter specifies the name of the connection string in the config file. If the config file looks like this:
 
 ``` xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -57,6 +57,8 @@ The path of the config file where the connection string named by is found. This 
 Then the `--connectionString` parameter should be set to SRVConnectionString.
 
 If not specified, it defaults to lookup order specified in the `--connectionString` parameter documentation.
+
+Note: `--connectionStringConfigPath` uses absolute path, whereas `--assembly` uses relative path.
 
 ## `--task, -t=VALUE` (optional)
 
@@ -123,7 +125,7 @@ The directory to load SQL scripts specified by migrations from.
 
 Filters migrations to be run based on tags. See [Filter migrations run based on tags](xref:migration-filter-tags). See also `--include-untagged` option.
 
-## `--include-untagged`
+## `--include-untagged:`
 
 Includes untagged migrations. By default, if you use `--tag=VALUE` to filter migrations to be run based on tags, untagged migrations will be excluded.
 
