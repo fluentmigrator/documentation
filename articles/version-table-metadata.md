@@ -29,39 +29,29 @@ using FluentMigrator.Runner.VersionTableInfo;
 namespace Migrations
 {
     [VersionTableMetaData]
-    public class VersionTable : IVersionTableMetaData
+    public class CustomVersionTableMetaData : IVersionTableMetaData
     {
-        public string ColumnName
-        {
-            get { return "Version"; }
-        }
+        public virtual string SchemaName => "";
 
-        public string SchemaName
-        {
-            get { return ""; }
-        }
+        public virtual string TableName => "VersionInfo";
 
-        public string TableName
-        {
-            get { return "Version2"; }
-        }
+        public virtual string ColumnName => "Version";
 
-        public string UniqueIndexName
-        {
-            get { return "UC_Version"; }
-        }
+        public virtual string UniqueIndexName => "UC_Version";
 
-        public virtual string AppliedOnColumnName
-        {
-            get { return "AppliedOn"; }
-        }
+        public virtual string AppliedOnColumnName => "AppliedOn";
 
-        public virtual string DescriptionColumnName
-        {
-            get { return "Description"; }
-        }
+        public virtual string DescriptionColumnName => "Description";
+
+        public virtual bool OwnsSchema => true;
     }
 }
+```
+
+Finally, register it via Microsoft Dependency Injection:
+
+```c#
+serviceCollection.AddScoped(typeof(IVersionTableMetaData), typeof(CustomVersionTableMetaData));
 ```
 
 # Overriding the DefaultVersionTableMetaData class
@@ -77,4 +67,10 @@ public class VersionTable : DefaultVersionTableMetaData
         get { return "Version"; }
     }
 }
+```
+
+Finally, register it via Microsoft Dependency Injection:
+
+```c#
+serviceCollection.AddScoped(typeof(IVersionTableMetaData), typeof(VersionTable));
 ```
