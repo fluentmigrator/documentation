@@ -19,6 +19,12 @@ This mode can be used in combination with the new [TransactionBehavior](xref:Flu
 
 For this migration it will be run outside of a transaction. The default value for [TransactionBehavior](xref:FluentMigrator.TransactionBehavior) is [Default](xref:FluentMigrator.TransactionBehavior.Default) which means the migration will be run in a transaction.
 
+> [!NOTE]
+> Not all databases support "Transactional Data Definition Language" (Transactional DDL).
+> 
+> * Sybase and SQL Server support some version of Transactional DDL through Transact-SQL language, but there are some limitations around schema binding, user-defined types, and when "names" are bound/resolved.
+> * MySQL introducd Transactional DDL support in MySQL 8.0 as "[atomic DDL](https://dev.mysql.com/doc/refman/8.0/en/atomic-ddl.html#:~:text=MySQL%208.0%20supports%20atomic%20Data,into%20a%20single%2C%20atomic%20operation.)".
+
 ## Transaction-Per-Session ##
 
 Up to this release, there has been one mode, Transaction-Per-Session. This means that if two migrations or more migrations are run together during the same task (e.g. migrate up or down) then this occurs in the same transaction and if one of the migrations fails then all the migrations are rolled back.
