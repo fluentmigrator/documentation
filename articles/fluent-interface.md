@@ -115,9 +115,9 @@ If you want to insert a string as non-Unicode (ANSI) then use the NonUnicodeStri
 Insert.IntoTable("TestTable").Row(new { Name = new NonUnicodeString("ansi string") });
 ```
 
-## AllRows Attribute
+## `AllRows()` Method
 
-A common task is to add a non-nullable column without a default value. One way this can be achieved is with the 'AllRows' attribute, via these three steps:
+A common task is to add a non-nullable column without a default value. One way this can be achieved is with the 'AllRows' method, via these three steps:
 
 1. Add new nullable column.
 ```cs
@@ -126,7 +126,7 @@ Alter.Table("Bar")
     .AsDateTime()
     .Nullable();
 ```
-2. Update all rows to an initial value using the AllRows attribute.
+2. Update all rows to an initial value using the AllRows method.
 ```cs
 Update.Table("Bar")
     .Set(new { SomeDate = DateTime.Today })
@@ -140,8 +140,9 @@ Alter.Table("Bar")
     .NotNullable();
 ```
 
+### `SetExistingRowsTo` alternative to AllRows()`
 
-As of version 1.3.0, this can be done with a single statement using the SetExistingRowsTo method.
+As of version 1.3.0, this can be done with a single statement using the `SetExistingRowsTo` method.
 
 ```cs
 Alter.Table("Bar")
