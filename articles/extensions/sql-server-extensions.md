@@ -36,6 +36,28 @@ Create.UniqueConstraint("UQ").OnTable("TestTable").Column("Name").Clustered();
 
 Note: You have to create the primary key index or unique constraint separately from the Create.Table expression to be able to specify them as clustered or non-clustered.
 
+### Create a unique constraint on nullable columns using null value filter
+
+Note: SQL Server has a different approach to creating unique constraints on nullable columns than ANSI standard.
+
+```cs
+Create.Index("UQ_NullFilter")
+    .OnTable("TestTable").InSchema("dbo")
+    .OnColumn("Name").Ascending()
+    .WithOptions().Unique()
+    .WithOptions().Filter("[Name] IS NOT NULL");
+```
+
+This will generate the following T-SQL DDL statement:
+
+```sql
+CREATE UNIQUE NONCLUSTERED INDEX [UQ_NullFilter] ON [dbo].[TestTable]
+(
+	[Name] ASC
+)
+WHERE ([Name] IS NOT NULL)
+```
+
 ## Create a column of SQL data type `nvarchar(MAX)` / `varchar(MAX)`
 
 Use `int.MaxValue` to represent infinite length strings.
