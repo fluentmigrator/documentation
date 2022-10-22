@@ -1,6 +1,6 @@
 ---
-uid: change-naming-conventions.md
-title: How To: Change Naming Conventions
+uid: faq-change-naming-conventions.md
+title: "How To: Change Naming Conventions"
 ---
 
 FluentMigrator supports changing naming conventions for:
