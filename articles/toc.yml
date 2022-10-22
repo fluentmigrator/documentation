@@ -37,7 +37,7 @@
   - name: Create custom metadata for the VersionInfo table
     href: xref:version-table-metadata
   - name: Customize SQL object naming conventions
-    href: xref:change-naming-conventions.md
+    href: faq-change-naming-conventions.md
 - name: Migration runners
   items:
   - name: Console
