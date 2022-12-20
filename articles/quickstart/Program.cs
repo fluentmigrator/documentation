@@ -12,20 +12,19 @@ namespace test
     {
         static void Main(string[] args)
         {
-            var serviceProvider = CreateServices();
-
-            // Put the database update into a scope to ensure
-            // that all resources will be disposed.
+            using (var serviceProvider = CreateServices())
             using (var scope = serviceProvider.CreateScope())
             {
+                // Put the database update into a scope to ensure
+                // that all resources will be disposed.
                 UpdateDatabase(scope.ServiceProvider);
             }
-        }
+         }
 
         /// <summary>
         /// Configure the dependency injection services
         /// </summary>
-        private static IServiceProvider CreateServices()
+        private static ServiceProvider CreateServices()
         {
             return new ServiceCollection()
                 // Add common FluentMigrator services
