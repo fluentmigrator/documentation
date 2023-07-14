@@ -9,6 +9,7 @@ Frequently, it is useful for a project to employ a specific system for migration
 
 An example is below.  This uses a system where the migration version is of the format BBYYYYMMDDHHMM, where BB is a branch, YYYY is year, MM is month, and so on.
 
+
 ```csharp
 /// <summary>
 /// Mark all migrations with this INSTEAD of [Migration].
@@ -38,3 +39,5 @@ public class TestLcmpMigration : Migration
     public override void Up() { /* ... */ }
 }
 ```
+
+Note, this example also contains an additional attribute property, Author, to demonstrate that you can have additional properties. In practice, adding an Author may not be entirely useful, since it will not be automatically added to the VersionInfo table as part of the audit log of what was executed against the target database.  However, if developers were to tag the migrations they wrote with the Author field, it might assist in troubleshooting production issues. As a best practice, these issues should be caught by a good CI/CD process that involves continuously building the initial full database schema to create a baseline, and then applying all migrations. In this way, hopefully nobody is going to wake "Scott Stafford" up in the middle of the night due to a production issue :)
