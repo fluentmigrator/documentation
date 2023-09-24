@@ -46,6 +46,26 @@ public class CreateViewsMigration : Migration
 }
 ```
 
+Additionally, you may want to special-case only one database, while handle all other databases the same way:
+
+```cs
+public class CreateViewsMigration : Migration
+{
+     public override void Up()
+     {
+        var createSchemaExpr = IfDatabase(t => t != ProcessorId.SQLite).Create.Schema("TestSchema");
+
+        IfDatabase(ProcessorId.SQLite).Execute.Sql("ATTACH DATABASE '' AS \"TestSchema\"");
+     }
+
+     public override void Down()
+     {
+         IfDatabase(ProcessorId.SQLite).Delegate(() => Console.Error.WriteLine("To delete a schema in SQLite requires detaching database."));
+         IfDatabase(t => t != ProcessorId.SQLite).Delete.Schema("TestSchema");
+     }
+}
+```
+
 # Supported databases
 
 [!include[Supported databases](../snippets/supported-databases.md)]
