@@ -5,4 +5,12 @@
 [submodule "fm-v3.x"]
 	path = fm-v3.x
 	url = https://github.com/fluentmigrator/fluentmigrator
-	branch = master
+	branch = archive/3.x
+[submodule "fm-v4.x"]
+	path = fm-v4.x
+	url = https://github.com/fluentmigrator/fluentmigrator
+	branch = archive/4.x
+[submodule "fm-v5.x"]
+	path = fm-v5.x
+	url = https://github.com/fluentmigrator/fluentmigrator
+	branch = main
