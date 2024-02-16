@@ -41,6 +41,48 @@
       "properties": {
         "TargetFramework": "net461"
       }
+    },
+    {
+      "src": [
+        {
+          "src": "fm-v4.x/src",
+          "files": [
+            "**.csproj"
+          ],
+          "exclude": [
+            "FluentMigrator.DotNet.Cli/**",
+            "FluentMigrator.Console/**",
+            "FluentMigrator.MSBuild/**"
+          ]
+        }
+      ],
+      "dest": "api/v4.x",
+      "filter": "api-filter.yml",
+      "disableGitFeatures": true,
+      "properties": {
+        "TargetFramework": "net461"
+      }
+    },
+    {
+      "src": [
+        {
+          "src": "fm-v5.x/src",
+          "files": [
+            "**.csproj"
+          ],
+          "exclude": [
+            "FluentMigrator.DotNet.Cli/**",
+            "FluentMigrator.Console/**",
+            "FluentMigrator.MSBuild/**"
+          ]
+        }
+      ],
+      "dest": "api/v5.x",
+      "filter": "api-filter.yml",
+      "disableGitFeatures": true,
+      "properties": {
+        "TargetFramework": "net461"
+      }
     }
   ],
   "build": {
