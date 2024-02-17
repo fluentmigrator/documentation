@@ -18,7 +18,7 @@
       "filter": "api-filter.yml",
       "disableGitFeatures": true,
       "properties": {
-        "TargetFramework": "net461"
+        "TargetFramework": "net45"
       }
     },
     {
@@ -81,7 +81,7 @@
       "filter": "api-filter.yml",
       "disableGitFeatures": true,
       "properties": {
-        "TargetFramework": "net461"
+        "TargetFramework": "net48"
       }
     }
   ],
@@ -96,7 +96,20 @@
       {
         "files": [ "**.yml", "**.md" ],
         "src": "api/v3.x",
-        "dest": "api/v3.x"
+        "dest": "api/v3.x",
+        "group": "v3.x"
+      },
+      {
+        "files": [ "**.yml", "**.md" ],
+        "src": "api/v4.x",
+        "dest": "api/v4.x",
+        "group": "v4.x"
+      },
+      {
+        "files": [ "**.yml", "**.md" ],
+        "src": "api/v5.x",
+        "dest": "api/v5.x",
+        "group": "v5.x"
       },
       {
         "files": [
@@ -134,6 +147,24 @@
       {
         "files": [
           "apidoc/v3.x/**.md"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      },
+      {
+        "files": [
+          "apidoc/v4.x/**.md"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      },
+      {
+        "files": [
+          "apidoc/v5.x/**.md"
         ],
         "exclude": [
           "obj/**",
@@ -177,6 +208,16 @@
           "repo": "https://github.com/fluentmigrator/documentation",
           "branch": "master",
           "apiSpecFolder": "apidoc/v3.x"
+        },
+        "api/v4.x/**": {
+          "repo": "https://github.com/fluentmigrator/documentation",
+          "branch": "master",
+          "apiSpecFolder": "apidoc/v4.x"
+        },
+        "api/v5.x/**": {
+          "repo": "https://github.com/fluentmigrator/documentation",
+          "branch": "master",
+          "apiSpecFolder": "apidoc/v5.x"
         }
       }
     }

@@ -9,27 +9,18 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  docFxTool: 'mono docfx.console/tools/docfx.exe'
-
 steps:
 - script: |
     git submodule update --init --recursive
   displayName: 'Update submodules (main fluentmigrator repo)'
 
-- task: NuGetToolInstaller@1
-
-# We need to use 2.59.4 of docfx.console due to https://github.com/dotnet/docfx/issues/8097 
-# which is fixed by https://github.com/dotnet/docfx/pull/8135
-- task: NuGetCommand@2
-  displayName: 'Install docfx.console'
-  inputs:
-    command: 'custom'
-    arguments: 'install docfx.console -Version 2.59.4 -ExcludeVersion'
+- script: |
+    dotnet tool install -g docfx --version 2.75.2
+  displayName: 'Install dotnet tool DocFX'
 
 - script: |
-    $(docFxTool) metadata docfx.json
-    $(docFxTool) build docfx.json
+    docfx metadata docfx.json
+    docfx build docfx.json
   displayName: 'Run DocFX build'
 
 - task: ArchiveFiles@2

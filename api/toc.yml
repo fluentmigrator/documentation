@@ -1,12 +1,12 @@
 - name: Version 2.x
   href: v2.x/toc.yml
-  topicHref: v2.x/index.md
+  topicHref: v2.x/index.html
 - name: Version 3.x
-  href: v3.x/
-  topicHref: v3.x/index.md
+  href: v3.x/toc.yml
+  topicHref: v3.x/index.html
 - name: Version 4.x
-  href: v4.x/
-  topicHref: v4.x/index.md
+  href: v4.x/toc.yml
+  topicHref: v4.x/index.html
 - name: Version 5.x
-  href: v5.x/
-  topicHref: v5.x/index.md
+  href: v5.x/toc.yml
+  topicHref: v5.x/index.html
