@@ -16,7 +16,7 @@ steps:
 
 - task: UseDotNet@2
   inputs:
-  version: '8.x'
+    version: '8.x'
 
 - script: |
     dotnet tool install -g docfx --version 2.75.2
