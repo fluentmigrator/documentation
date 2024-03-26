@@ -18,6 +18,7 @@ steps:
   inputs:
     version: '8.x'
 
+
 - script: |
     dotnet tool install -g docfx --version 2.75.2
   displayName: 'Install dotnet tool DocFX'
