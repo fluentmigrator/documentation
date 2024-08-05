@@ -23,6 +23,16 @@ Tags are assigned to migrations with an attribute/s:
 public class DoSomeStuffToEuropeanStagingAndProdDbs : Migration { /* ... etc ... */ }
 ```
 
+# Tag Matching Behavior
+
+By default, FluentMigrator only runs migrations that have no tags or whose tags match all of the tags passed in to the runner.  Another option that can be used is passing in the `TagBehavior.Any` enum to the `[Tags]` attribute so that the migration will run if any of the tags defined in the attribute match those passed into the runner.
+
+```cs
+[Tags(TagBehavior.Any, "UK")]
+[Migration(2)]
+public class DoSomethingToUnitedKingdomDbs : Migration { /* ... etc ... */ }
+```
+
 # Inheriting Migration Tags
 
 Tag inheritance can apply to both base classes (single-inheritance) and interfaces (multiple-inheritance).
