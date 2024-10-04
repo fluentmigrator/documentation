@@ -23,6 +23,15 @@ For example, suppose FluentMigrator.DotNet.Cli ships with a particular version o
 
 As another example, suppose FluentMigrator has not yet shipped a .NET vNext compatible binary, but you want to work with that binary.  The `--allowDirtyAssemblies` switch will help resolve the `System.Runtime` assembly.
 
+As another example, suppose you want to use dependency injection to load your data access layer for use with `Execute.WithConnection`.  You might get the following runtime error testing your migrations due to MSBuild loading a different version of `System.Diagnostics.DiagnosticSource`:
+
+```
+While executing migrations the following error was encountered: Could not load file or assembly 'System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' or one of its dependencies. The system cannot find the file specified.,
+    at Autofac.Core.Lifetime.LifetimeScope..ctor(IComponentRegistry componentRegistry, Object tag)
+    at Autofac.Core.Container..ctor(IComponentRegistry componentRegistry)
+    at Autofac.ContainerBuilder.Build(ContainerBuildOptions options)
+```
+
 ### `UseMsBuildLogging` (optional, defaults to false)
 
 Historically, the FluentMigrator.MSBuild task uses Console.Out to display output.  As MSBuild is multi-threaded, it is unsafe to do it this way.
