@@ -20,3 +20,7 @@ Insert.IntoTable("User").Row(new { Username = RawSql.Insert("CURRENT_USER") });
 ```
 
 This will result in the Username column being set to the current username. Be aware that by using an sql server specific function like `CURRENT_USER` that this expression is not portable anymore and will not work against another database (like PostgreSQL).
+
+# Limitations of Raw SQL Helper
+
+`RawSql.Insert` cannot be used as the value in the Set or Where clause of an Update or Delete expression. See issue: [fluentmigrator/fluentmigrator#1827](https://github.com/fluentmigrator/fluentmigrator/issues/1827).
