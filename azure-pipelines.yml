@@ -16,7 +16,7 @@ steps:
 
 # If installing docfx fails due to missing .NET SDK, update global.json version to match the one available in the current ubuntu-latest
 - script: |
-    dotnet tool install -g docfx --version 2.75.2
+    dotnet tool install -g docfx --version 2.77.0
   displayName: 'Install dotnet tool DocFX'
 
 - script: |
