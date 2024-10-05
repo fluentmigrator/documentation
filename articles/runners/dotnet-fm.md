@@ -35,7 +35,7 @@ dotnet-fm  -+- list -+- migrations   = List applied and pending migrations
 Shows all available processor identifiers to be used by the `-p`
 or `--processor` command line switch.
 
-# .NET Runtime related switches
+## .NET Runtime related switches
 
 ### `--allowDirtyAssemblies` switch
 
@@ -46,7 +46,7 @@ For example, suppose FluentMigrator.DotNet.Cli ships with a particular version o
 
 As another example, suppose FluentMigrator has not yet shipped a .NET vNext compatible binary, but you want to work with that binary.  The `--allowDirtyAssemblies` switch will help resolve the `System.Runtime` assembly.
 
-# Connection related commands
+## Connection related commands
 
 The following commands need a processor id and/or a connection:
 

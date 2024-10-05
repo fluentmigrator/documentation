@@ -44,6 +44,8 @@
     href: xref:runner-console
   - name: dotnet-fm
     href: xref:dotnet-fm
+  - name: MSBuild
+    href: xref:runner-msbuild
 - name: Obsolete Features
   items:
   - name: "ApplicationContext: Passing parameters to Migrations"

@@ -52,6 +52,7 @@ The project is split into multiple packages:
 
 - [Console](xref:runner-console)
 - [dotnet-fm](xref:dotnet-fm)
+- [MSBuild](xref:runner-msbuild)
 
 # Supported databases
 
