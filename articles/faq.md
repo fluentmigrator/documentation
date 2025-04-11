@@ -14,9 +14,13 @@ Possible reasons:
 - Migration class isn't attributed with `MigrationAttribute`
 - The versions of the `Migrate.exe` tool (`FluentMigrator.Console` package) and the `FluentMigrator` package(s) referenced in your project are different.
 
-## How can I run FluentMigrator.DotNet.Cli with a .NET 5.0 assembly?
+## How can I run FluentMigrator.DotNet.Cli with a different .NET runtime target migration assembly?
 
-The FluentMigrator.DotNet.Cli contains an `--allowDirtyAssemblies` switch that will allow you to load your 5.0 assemblies in a .NET Core 3.1 context.  We're working on .NET 5.0 support.'
+The FluentMigrator.DotNet.Cli contains an `--allowDirtyAssemblies` switch that will allow you to load your migration assemblies (e.g. 9.0) in a different .NET runtime context (e.g. 8.0).
+
+## Why aren't my Maintenance Migrations found and run by my In-Process Runner?
+
+If you're using a custom runner, use `.For.All()` instead of `.For.Migrations()`.
 
 ## Why do I get `System.IO.FileLoadException: Could not load file or assembly 'FluentMigrator ...`?
 
