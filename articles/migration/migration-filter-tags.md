@@ -91,7 +91,7 @@ var serviceProvider = new ServiceCollection()
     .ConfigureRunner(rb => rb
         .AddSqlServer2008()
         .WithGlobalConnectionString("server=.\\SQLEXPRESS;uid=testfm;pwd=test;Trusted_Connection=yes;database=FluentMigrator")
-        .ScanIn(typeof(DoSomeStuffToEuropeanStagingAndProdDbs).Assembly).For.Migrations())
+        .ScanIn(typeof(DoSomeStuffToEuropeanStagingAndProdDbs).Assembly).For.All())
     .AddLogging(lb => lb.AddFluentMigratorConsole())
     // Start of type filter configuration
     .Configure<RunnerOptions>(opt => {
