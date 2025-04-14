@@ -41,7 +41,7 @@ private static void MigrateDb(IServiceCollection services, string connectionStri
         .ConfigureRunner(fluentMigratorBuilder => fluentMigratorBuilder
             .AddSQLite()
             .WithGlobalConnectionString(connectionString)
-            .ScanIn(assemblyWithMigrations).For.Migrations()
+            .ScanIn(assemblyWithMigrations).For.All() // Get all migrations, maintenance migrations and customizations
         )
         .BuildServiceProvider();
 

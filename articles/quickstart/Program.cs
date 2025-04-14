@@ -34,8 +34,8 @@ namespace test
                     .AddSQLite()
                     // Set the connection string
                     .WithGlobalConnectionString("Data Source=test.db")
-                    // Define the assembly containing the migrations
-                    .ScanIn(typeof(AddLogTable).Assembly).For.Migrations())
+                    // Define the assembly containing the migrations, maintenance migrations and other customizations
+                    .ScanIn(typeof(AddLogTable).Assembly).For.All())
                 // Enable logging to console in the FluentMigrator way
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
                 // Build the service provider
