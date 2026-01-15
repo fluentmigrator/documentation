@@ -1,3 +1,5 @@
+# New docs are hosted here : https://fluentmigrator.github.io/
+
 # FluentMigrator documentation [![(CC-BY-SA 4.0)](https://img.shields.io/github/license/fluentmigrator/documentation.svg)](https://github.com/fluentmigrator/documentation/blob/master/LICENSE.txt)
 
 This is the FluentMigrator documentation created with
